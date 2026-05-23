@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bone: #ffffff;
@@ -42,13 +42,7 @@
     letter-spacing: -0.035em;
     line-height: 0.88;
   }
-  h1 em, h2 em, h3 em {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic;
-    font-weight: 400;
-    font-variation-settings: normal;
-    letter-spacing: -0.015em;
-  }
+  h1 em, h2 em, h3 em { font-style: normal; font-weight: 700; }
   img { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
   .container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
@@ -217,18 +211,14 @@
     position: relative;
   }
   .hero-center h1 {
-    font-size: clamp(48px, 8vw, 120px);
+    font-size: clamp(48px, 8.5vw, 132px);
     color: #fff;
-    font-variation-settings: "opsz" 96, "wdth" 100;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 0.96;
+    font-variation-settings: "opsz" 96, "wdth" 92;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
   }
-  .hero-center h1 em {
-    color: var(--brass-light);
-    font-size: 1.1em;
-    line-height: 0.9;
-  }
+  .hero-center h1 em { color: var(--brass-light); font-weight: 700; }
   .hero-mark {
     position: absolute;
     right: 0; top: 50%;
@@ -271,12 +261,11 @@
   section { padding: 180px 0; position: relative; }
   .section-head { max-width: 880px; margin-bottom: 96px; position: relative; }
   .section-head h2 {
-    font-size: clamp(48px, 7.5vw, 116px);
-    margin-top: 28px;
-    letter-spacing: -0.03em;
-    font-variation-settings: "opsz" 96, "wdth" 100;
-    font-weight: 500;
-    line-height: 0.98;
+    font-size: clamp(56px, 9vw, 144px);
+    margin-top: 32px;
+    letter-spacing: -0.045em;
+    font-variation-settings: "opsz" 96, "wdth" 92;
+    font-weight: 700;
   }
   .section-head p {
     margin-top: 36px;
@@ -309,54 +298,50 @@
   }
   .pronto h2 { color: #fff; }
   .pronto-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    display: flex; flex-direction: column;
     margin-top: 96px;
     border-top: 1px solid var(--line-dark);
   }
   .pronto-item {
-    padding: 56px 48px;
+    padding: 56px 0;
     border-bottom: 1px solid var(--line-dark);
-    position: relative;
-    display: flex; flex-direction: column;
-    align-items: flex-start;
-    transition: background .35s ease;
+    display: grid;
+    grid-template-columns: 100px minmax(280px, 1fr) minmax(360px, 1.3fr);
+    gap: 80px;
+    align-items: start;
+    transition: padding-left .35s ease;
   }
-  .pronto-item + .pronto-item { border-left: 1px solid var(--line-dark); }
-  .pronto-item:first-child { padding-left: 0; }
-  .pronto-item:last-child { padding-right: 0; }
-  .pronto-item:hover { background: rgba(255,255,255,0.02); }
+  .pronto-item:hover { padding-left: 24px; }
   .pronto-item .num {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px; letter-spacing: 0.24em;
-    color: var(--brass-light);
-    text-transform: uppercase;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-variation-settings: "opsz" 72, "wdth" 100;
     font-weight: 600;
-    margin-bottom: 40px;
-    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 64px;
+    line-height: 0.85;
+    color: var(--brass-light);
+    letter-spacing: -0.04em;
   }
-  .pronto-item .num::after {
-    content: ''; width: 36px; height: 1px;
-    background: var(--brass-light);
-    transition: width .35s ease;
-  }
-  .pronto-item:hover .num::after { width: 60px; }
   .pronto-item > div { width: 100%; }
   .pronto-item h3 {
-    font-size: 32px; line-height: 1;
-    color: #fff; font-weight: 500;
-    font-variation-settings: "opsz" 48, "wdth" 100;
-    letter-spacing: -0.025em;
+    font-size: 44px; line-height: 0.95;
+    color: #fff; font-weight: 600;
+    font-variation-settings: "opsz" 56, "wdth" 95;
+    letter-spacing: -0.035em;
   }
   .pronto-item p {
-    margin-top: 24px; font-size: 14.5px;
+    font-size: 16px;
     color: rgba(236,230,215,0.7);
-    line-height: 1.7;
+    line-height: 1.65;
+    padding-top: 12px;
   }
   @media (max-width: 880px) {
-    .pronto-grid { grid-template-columns: 1fr; }
-    .pronto-item { padding: 48px 0; }
-    .pronto-item + .pronto-item { border-left: 0; }
+    .pronto-item {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 40px 0;
+    }
+    .pronto-item:hover { padding-left: 0; }
+    .pronto-item .num { font-size: 48px; }
     .pronto-item h3 { font-size: 32px; }
   }
 
@@ -384,12 +369,12 @@
     content: ''; width: 36px; height: 1px; background: var(--brass-light);
   }
   .pronto-closing h3 {
-    font-size: clamp(32px, 4.5vw, 60px);
-    line-height: 1;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 0.98;
     color: #fff;
-    font-weight: 500;
-    font-variation-settings: "opsz" 72, "wdth" 100;
-    letter-spacing: -0.025em;
+    font-weight: 700;
+    font-variation-settings: "opsz" 72, "wdth" 92;
+    letter-spacing: -0.04em;
   }
   .pronto-closing h3 em {
     color: var(--brass-light);
@@ -422,10 +407,13 @@
     .pronto-closing { grid-template-columns: 1fr; gap: 40px; align-items: start; padding-top: 60px; margin-top: 60px; }
   }
 
-  /* pronto specs strip */
+  /* quick facts bar (after hero) */
+  .quick-facts {
+    background: var(--ink);
+    padding: 0;
+  }
   .pronto-specs {
-    margin-top: -40px;
-    padding: 40px 0;
+    padding: 48px 0;
     border-top: 1px solid var(--line-dark);
     border-bottom: 1px solid var(--line-dark);
     display: grid;
@@ -639,10 +627,10 @@
     color: var(--brass); letter-spacing: 0.22em; text-transform: uppercase;
   }
   .lazer-cat h3 {
-    font-size: 48px; font-weight: 500;
-    font-variation-settings: "opsz" 72, "wdth" 100;
-    margin-top: 14px; line-height: 1;
-    letter-spacing: -0.03em;
+    font-size: 56px; font-weight: 700;
+    font-variation-settings: "opsz" 72, "wdth" 90;
+    margin-top: 14px; line-height: 0.92;
+    letter-spacing: -0.04em;
   }
   .lazer-cat-body {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -1086,14 +1074,9 @@
   </div>
 </header>
 
-<!-- VANTAGEM PRONTO -->
-<section class="pronto">
+<!-- QUICK FACTS -->
+<section class="quick-facts">
   <div class="container-wide">
-    <div class="section-head reveal">
-      <span class="sec-index">01 / Por que comprar agora</span>
-      <h2>Sem espera.<br/><em>Sem obra.</em></h2>
-    </div>
-
     <div class="pronto-specs">
       <div class="spec-item">
         <div class="spec-lbl">Tipologia</div>
@@ -1116,26 +1099,36 @@
         <div class="spec-lbl spec-sub">Mais de 40 anos construindo</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- VANTAGEM PRONTO -->
+<section class="pronto">
+  <div class="container-wide">
+    <div class="section-head reveal">
+      <span class="sec-index">01 / Por que comprar agora</span>
+      <h2>Sem espera.<br/><em>Sem obra.</em></h2>
+    </div>
 
     <div class="pronto-grid">
       <div class="pronto-item">
         <span class="num">01</span>
         <div>
-          <h3>Chaves<br/>na hora</h3>
+          <h3>Chaves na hora</h3>
           <p>Visite, escolha sua unidade e receba as chaves após a assinatura. Sem espera de 36 meses de obra.</p>
         </div>
       </div>
       <div class="pronto-item">
         <span class="num">02</span>
         <div>
-          <h3>Você vê<br/>antes de comprar</h3>
+          <h3>Você vê antes de comprar</h3>
           <p>Cada acabamento, cada vista, cada andar, tudo o que está no folder existe e está exatamente como você vai receber.</p>
         </div>
       </div>
       <div class="pronto-item">
         <span class="num">03</span>
         <div>
-          <h3>Financiamento<br/>facilitado</h3>
+          <h3>Financiamento facilitado</h3>
           <p>Financie em qualquer banco ou direto conosco em até 100 meses.</p>
         </div>
       </div>

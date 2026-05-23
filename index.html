@@ -170,7 +170,7 @@
   .hero-overlay {
     position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(14,13,11,0.55) 0%, rgba(14,13,11,0.1) 30%, rgba(14,13,11,0) 50%, rgba(14,13,11,0.7) 90%, rgba(14,13,11,0.95) 100%);
+      linear-gradient(180deg, rgba(14,13,11,0.3) 0%, rgba(14,13,11,0) 35%, rgba(14,13,11,0) 75%, rgba(14,13,11,0.4) 100%);
   }
   .hero-frame {
     position: relative; z-index: 2;
@@ -314,40 +314,39 @@
   .pronto-item + .pronto-item { border-left: 1px solid var(--line-dark); }
   .pronto-item:first-child { padding-left: 0; }
   .pronto-item:last-child { padding-right: 0; }
-  .pronto-item:hover { background: rgba(255,255,255,0.025); }
+  .pronto-item:hover { background: rgba(255,255,255,0.02); }
   .pronto-item .num {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-variation-settings: "opsz" 96, "wdth" 78;
-    font-weight: 700;
-    font-size: 96px;
-    line-height: 0.85;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; letter-spacing: 0.24em;
     color: var(--brass-light);
-    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
     margin-bottom: 40px;
-    display: inline-flex; align-items: baseline; gap: 14px;
+    display: inline-flex; align-items: center; gap: 14px;
   }
   .pronto-item .num::after {
-    content: ''; width: 40px; height: 1px; background: var(--brass-light);
-    display: inline-block; margin-bottom: 14px;
+    content: ''; width: 36px; height: 1px;
+    background: var(--brass-light);
+    transition: width .35s ease;
   }
+  .pronto-item:hover .num::after { width: 60px; }
   .pronto-item > div { width: 100%; }
   .pronto-item h3 {
-    font-size: 30px; line-height: 1;
+    font-size: 38px; line-height: 0.98;
     color: #fff; font-weight: 600;
     font-variation-settings: "opsz" 48, "wdth" 95;
     letter-spacing: -0.035em;
   }
   .pronto-item p {
-    margin-top: 20px; font-size: 14px;
-    color: rgba(236,230,215,0.65);
+    margin-top: 24px; font-size: 14.5px;
+    color: rgba(236,230,215,0.7);
     line-height: 1.7;
   }
   @media (max-width: 880px) {
     .pronto-grid { grid-template-columns: 1fr; }
     .pronto-item { padding: 48px 0; }
     .pronto-item + .pronto-item { border-left: 0; }
-    .pronto-item .num { font-size: 72px; margin-bottom: 28px; }
-    .pronto-item h3 { font-size: 28px; }
+    .pronto-item h3 { font-size: 32px; }
   }
 
   /* pronto specs strip */

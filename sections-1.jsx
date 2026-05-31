@@ -46,7 +46,13 @@ function Nav({ activeSection }) {
         height: 72,
         gap: 24,
       }}>
-        <KairosLockup compact light={!scrolled} />
+        <div style={{
+          opacity: scrolled ? 1 : 0,
+          transition: 'opacity 220ms var(--ease-out)',
+          pointerEvents: scrolled ? 'auto' : 'none',
+        }}>
+          <KairosLockup compact />
+        </div>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="nav-links">
           {NAV_ITEMS.map(item => (
@@ -367,7 +373,7 @@ function HeroFullbleed() {
   return (
     <section id="top" style={{ position: 'relative', minHeight: '100vh', color: '#fff', overflow: 'hidden' }}>
       <ImgPlaceholder subject="Vista do edifício" tone="dark" ratio="auto"
-                      src="imagens/hero-torre.jpg" alt="Vista aérea do Edifício Kairós em Jatiúca, Maceió"
+                      src="imagens/hero-mar.jpg" alt="Jatiúca e o mar de Maceió, onde fica o Edifício Kairós"
                       style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', borderRadius: 0 }}>
         Vista do edifício ao entardecer
       </ImgPlaceholder>
@@ -383,20 +389,14 @@ function HeroFullbleed() {
         display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
       }}>
         <div>
-          <div style={{
-            display: 'inline-block',
-            background: 'rgba(0, 19, 63, 0.85)',
-            border: '1px solid rgba(255,255,255,0.14)',
-            borderRadius: 18,
-            padding: 'clamp(28px, 4vw, 48px) clamp(36px, 5.5vw, 64px)',
-            backdropFilter: 'blur(6px)',
-            WebkitBackdropFilter: 'blur(6px)',
-          }}>
-            <img src="imagens/brand-lockup.png" alt="Delman · Edifício Kairós"
-                 style={{ width: 'clamp(280px, 50vw, 520px)', height: 'auto', display: 'block' }}/>
-          </div>
-          <Eyebrow index="00" style={{ color: 'rgba(255,255,255,0.7)', marginTop: 28 }}>
-            <span style={{ color: 'rgba(255,255,255,0.85)' }}>Jatiúca · Maceió · Pronto para morar</span>
+          <img src="imagens/brand-lockup.png" alt="Delman · Edifício Kairós"
+               style={{
+                 width: 'clamp(230px, 40vw, 430px)',
+                 height: 'auto', display: 'block',
+                 filter: 'drop-shadow(0 6px 28px rgba(0,0,0,0.55))',
+               }}/>
+          <Eyebrow style={{ color: 'rgba(255,255,255,0.85)', marginTop: 28 }}>
+            <span style={{ color: 'rgba(255,255,255,0.9)' }}>Jatiúca · Maceió · Pronto para morar</span>
           </Eyebrow>
           <div style={{ display: 'flex', gap: 12, marginTop: 32 }}>
             <a href="#plantas" className="btn btn--accent btn--lg" style={{ borderBottom: 'none' }}>
@@ -462,37 +462,38 @@ function Intro() {
       <div className="container">
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1.6fr 0.9fr',
-          gap: 'clamp(32px, 5vw, 80px)',
-          alignItems: 'start',
+          gridTemplateColumns: '1.2fr 0.9fr',
+          gap: 'clamp(32px, 5vw, 72px)',
+          alignItems: 'center',
         }} className="intro-grid">
-          <div className="reveal">
+          <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
             <Eyebrow>O Edifício Kairós</Eyebrow>
+            <p className="t-body-lg" style={{ color: 'var(--fg-2)', maxWidth: 560 }}>
+              Cinco tipologias, 87 a 149 m², lazer completo, a cinco minutos da praia de
+              Jatiúca. As últimas unidades estão disponíveis direto com a{' '}
+              <strong style={{ color: 'var(--accent)', fontWeight: 700 }}>Construtora Delman</strong>,
+              com chaves na hora e financiamento facilitado.
+            </p>
+            <div style={{ borderLeft: '3px solid var(--accent)', paddingLeft: 24 }}>
+              <h2 className="t-display-2" style={{ color: 'var(--fg-1)', lineHeight: 1 }}>
+                Construtora <span className="t-serif" style={{ color: 'var(--accent)' }}>Delman</span>
+              </h2>
+              <p className="t-serif" style={{
+                fontStyle: 'italic',
+                fontSize: 'clamp(18px, 2vw, 26px)',
+                color: 'var(--fg-2)',
+                marginTop: 14,
+              }}>
+                Há mais de 40 anos construindo em Maceió.
+              </p>
+            </div>
           </div>
           <div className="reveal reveal--delay-1">
-            <h2 className="t-display-2" style={{ color: 'var(--fg-1)' }}>
-              O momento certo de morar bem é <span className="t-serif" style={{ color: 'var(--accent)' }}>agora.</span>
-            </h2>
-            <p className="t-body-lg" style={{ marginTop: 28, color: 'var(--fg-2)', maxWidth: 640 }}>
-              Cinco tipologias, 87 a 149 m², lazer completo, a cinco minutos da praia de Jatiúca. As últimas unidades estão disponíveis direto com a Construtora Delman, com chaves na hora e financiamento facilitado.
-            </p>
+            <ImgPlaceholder subject="Construtora Delman" tone="sand" ratio="4/5"
+                            src="imagens/construtora-delman.jpg"
+                            alt="Fundador da Construtora Delman"
+                            style={{ width: '100%' }} />
           </div>
-          <aside className="reveal reveal--delay-2" style={{
-            borderLeft: '1px solid var(--border)',
-            paddingLeft: 24,
-            color: 'var(--fg-2)',
-          }}>
-            <div style={{
-              fontFamily: 'var(--font-serif)',
-              fontStyle: 'italic',
-              fontSize: 16,
-              color: 'var(--fg-1)',
-              marginBottom: 8,
-            }}>Construtora Delman</div>
-            <p style={{ fontSize: 13, color: 'var(--fg-3)', lineHeight: 1.5 }}>
-              Há mais de 40 anos construindo em Maceió.
-            </p>
-          </aside>
         </div>
       </div>
       <style>{`

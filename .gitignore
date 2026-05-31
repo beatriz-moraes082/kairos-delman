@@ -19,3 +19,7 @@ _logos/
 # Config local do Claude Code (específica da máquina)
 .claude/settings.local.json
 _vista/
+_sea/
+
+# Foto-fonte solta na raiz (já otimizada em imagens/)
+/delmandono.jpg

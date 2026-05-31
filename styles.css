@@ -66,9 +66,9 @@
   --border-on-dark: rgba(255,255,255,.10);
 
   /* Type */
-  --font-sans:    "PolySans", "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "PolySans Wide", "PolySans", "Inter", system-ui, sans-serif;
-  --font-serif:   "Droid Serif", "Source Serif Pro", Georgia, serif;
+  --font-sans:    "PolySans", "Manrope", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "PolySans Wide", "PolySans", "Manrope", "Inter", system-ui, sans-serif;
+  --font-serif:   "Fraunces", "Droid Serif", "Source Serif Pro", Georgia, serif;
 
   /* Spacing */
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px;  --space-4: 16px;

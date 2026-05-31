@@ -33,10 +33,10 @@
   --k-line:        #D6D4CF;   /* hairline divider */
   --k-line-soft:   #E4E2DD;
 
-  --k-terra:       #982532;   /* accent — Delman bordô (cor da construtora) */
-  --k-terra-deep:  #7A1C26;   /* hover/press */
-  --k-terra-glow:  #B5333F;   /* lifted hover */
-  --k-terra-soft:  #F1DADD;   /* tinted bg */
+  --k-terra:       #8B2332;   /* accent — UM único vermelho (vinho/bordô Delman) */
+  --k-terra-deep:  #6E1B27;   /* hover/press */
+  --k-terra-glow:  #6E1B27;   /* hover (mesmo vinho, sem coral) */
+  --k-terra-soft:  #F0DDE0;   /* tinted bg (reservadas) */
   --k-clay:        #C2613D;   /* secondary warm — error / contrast */
 
   --k-leaf:        #4A6256;   /* deep teal-green — sustentável */

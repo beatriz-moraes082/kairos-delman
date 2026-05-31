@@ -212,16 +212,12 @@ function PriceForm() {
         <>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
             <div>
-              <div className="t-eyebrow" style={{ color: 'var(--accent)' }}>Receba a tabela</div>
               <h3 style={{
-                fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 28,
-                marginTop: 8, color: 'var(--fg-1)',
+                fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 26,
+                color: 'var(--fg-1)', maxWidth: 460, lineHeight: 1.2,
               }}>
-                Receba a tabela de preços.
+                Plantas detalhadas, valores e condições, direto no seu WhatsApp!
               </h3>
-              <p style={{ fontSize: 13, color: 'var(--fg-3)', marginTop: 6 }}>
-                Plantas detalhadas, valores e condições, direto no seu e-mail.
-              </p>
             </div>
             <div style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.22em', fontWeight: 500 }}>
               ETAPA {step + 1}/3

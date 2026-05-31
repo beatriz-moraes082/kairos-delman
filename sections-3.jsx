@@ -16,6 +16,54 @@ const GALLERY = [
   { caption: 'Jatiúca · vista aérea', tone: 'dark',   ratio: '4/3', src: 'imagens/localizacao-aerea.jpg' },
 ];
 
+/* Instagram embed — carrega o script oficial e processa o blockquote */
+function InstagramEmbed({ url }) {
+  const ref = useRef3(null);
+
+  useEffect3(() => {
+    const process = () => {
+      if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+      }
+    };
+    const existing = document.getElementById('ig-embed-script');
+    if (existing) {
+      process();
+    } else {
+      const s = document.createElement('script');
+      s.id = 'ig-embed-script';
+      s.src = 'https://www.instagram.com/embed.js';
+      s.async = true;
+      s.onload = process;
+      document.body.appendChild(s);
+    }
+  }, [url]);
+
+  return (
+    <blockquote
+      ref={ref}
+      className="instagram-media"
+      data-instgrm-permalink={url}
+      data-instgrm-version="14"
+      style={{
+        background: '#fff',
+        border: 0,
+        borderRadius: 6,
+        boxShadow: 'var(--shadow-3)',
+        margin: 0,
+        maxWidth: 420,
+        width: '100%',
+        minWidth: 280,
+      }}
+    >
+      <a href={url} target="_blank" rel="noopener noreferrer"
+         style={{ display: 'block', padding: 24, color: 'var(--fg-2)' }}>
+        Ver este vídeo no Instagram
+      </a>
+    </blockquote>
+  );
+}
+
 function Galeria() {
   const [open, setOpen] = useState3(-1);
 
@@ -113,7 +161,40 @@ function Galeria() {
             );
           })}
         </div>
+
+        {/* Vídeo do Instagram — dá dinamismo à seção */}
+        <div className="reveal" style={{ marginTop: 'clamp(40px, 6vw, 80px)' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '0.8fr 1fr',
+            gap: 'clamp(24px, 4vw, 56px)',
+            alignItems: 'center',
+          }} className="ig-grid">
+            <div>
+              <Eyebrow>No Instagram</Eyebrow>
+              <h3 className="t-h2" style={{ marginTop: 16, color: 'var(--fg-1)' }}>
+                Veja o Kairós <span className="t-serif" style={{ color: 'var(--accent)' }}>por dentro.</span>
+              </h3>
+              <p className="t-body-lg" style={{ marginTop: 16, color: 'var(--fg-2)', maxWidth: 420 }}>
+                Um tour pelos ambientes e pela área de lazer, direto do nosso perfil.
+              </p>
+              <a href="https://www.instagram.com/delman_construtora" target="_blank" rel="noopener noreferrer"
+                 className="btn btn--ghost" style={{ marginTop: 24, borderBottom: 'none' }}>
+                @delman_construtora <span className="arrow">→</span>
+              </a>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <InstagramEmbed url="https://www.instagram.com/p/DUa4fmMEdbq/" />
+            </div>
+          </div>
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 760px) {
+          .ig-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
 
       {/* Lightbox */}
       {open >= 0 && (

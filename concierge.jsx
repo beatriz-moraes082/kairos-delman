@@ -1,10 +1,10 @@
 /* global React */
-// Concierge Kairós — chat com IA via window.claude
+// Concierge Kairós, chat com IA via window.claude
 
 const { useState: useStateC, useEffect: useEffectC, useRef: useRefC } = React;
 
 const KNOWLEDGE = `
-# Edifício Kairós — Base de conhecimento para o concierge IA
+# Edifício Kairós, Base de conhecimento para o concierge IA
 
 ## Identidade
 - Nome: Edifício Kairós
@@ -14,11 +14,11 @@ const KNOWLEDGE = `
 - Status: Entregue em 2025. Pronto para morar. Chaves na hora após assinatura.
 
 ## Tipologias (todas com 3 quartos, varanda, área de serviço, ≥2 suítes)
-- 87m² — 3 quartos, 2 suítes. Tipo 01/06 (frontal/posterior). 2 vagas. Varanda 8m².
+- 87m², 3 quartos, 2 suítes. Tipo 01/06 (frontal/posterior). 2 vagas. Varanda 8m².
   A partir de R$ 890 mil. Status: últimas unidades.
-- 97m² — 3 suítes, padrão alto. Tipo 02/05. 2 vagas amplas. Varanda gourmet 12m².
+- 97m², 3 suítes, padrão alto. Tipo 02/05. 2 vagas amplas. Varanda gourmet 12m².
   A partir de R$ 1,12 mi. Status: disponível.
-- 149m² — Cobertura. 3 suítes (master + closet duplo). 3 vagas. Varanda gourmet 28m² com churrasqueira.
+- 149m², Cobertura. 3 suítes (master + closet duplo). 3 vagas. Varanda gourmet 28m² com churrasqueira.
   Investimento sob consulta. Status: última unidade.
 
 ## Edifício (estrutura)
@@ -39,7 +39,7 @@ Serviços: concierge na entrada, sala de e-commerce/encomendas, compartilhamento
 - Hospital Memorial: 9 min
 - Pajuçara: 10 min
 - Aeroporto Zumbi dos Palmares: 22 min
-- Restaurantes, padarias, academias e escolas no entorno imediato — sem precisar pegar a Mangabeiras.
+- Restaurantes, padarias, academias e escolas no entorno imediato, sem precisar pegar a Mangabeiras.
 
 ## Sustentabilidade
 - Energia solar fotovoltaica (abate conta das áreas comuns)
@@ -51,12 +51,12 @@ Serviços: concierge na entrada, sala de e-commerce/encomendas, compartilhamento
 
 ## Financiamento e compra
 - Financie em qualquer banco (Caixa, Itaú, Bradesco, Santander, etc.) OU direto com a construtora em até 100 meses.
-- Chaves entregues na hora após assinatura — não há espera de obra.
+- Chaves entregues na hora após assinatura, não há espera de obra.
 - Tabela completa de preços disponível por e-mail ou WhatsApp.
 
 ## Contato
-- WhatsApp: (82) 99682-3219 — resposta na hora
-- Telefone: (82) 3131-1505 — plantão comercial
+- WhatsApp: (82) 99682-3219, resposta na hora
+- Telefone: (82) 3131-1505, plantão comercial
 - E-mail: contato@delman.com.br
 - Instagram: @delmanconstrutora
 - Stand de vendas no próprio prédio · Seg a sex 9h–18h · Sáb 9h–13h
@@ -66,9 +66,9 @@ Serviços: concierge na entrada, sala de e-commerce/encomendas, compartilhamento
 - Direto, sem floreios. Números > adjetivos.
 - 1–3 parágrafos curtos. NUNCA mais que 120 palavras.
 - Se a pergunta for sobre algo fora do escopo (ex: outro prédio, mercado em geral, política), redirecione gentilmente para falar do Kairós ou sugerir contato direto.
-- Se não souber, diga "essa não tenho aqui — peça no WhatsApp (82) 99682-3219 que responde na hora".
+- Se não souber, diga "essa não tenho aqui, peça no WhatsApp (82) 99682-3219 que responde na hora".
 - Se a pessoa demonstrar interesse claro de compra, sugira sempre agendar visita ou pedir a tabela.
-- NÃO use markdown, listas com asterisco, ou negrito — apenas texto corrido natural.
+- NÃO use markdown, listas com asterisco, ou negrito, apenas texto corrido natural.
 - NÃO invente preços, datas, ou dados que não estão acima.
 `;
 
@@ -84,7 +84,7 @@ const SUGESTOES = [
 const INITIAL = [
   {
     role: 'assistant',
-    content: 'Oi! Sou o concierge do Kairós. Pergunte qualquer coisa sobre o edifício — plantas, valores, localização, lazer, financiamento. Respondo na hora.',
+    content: 'Oi! Sou o concierge do Kairós. Pergunte qualquer coisa sobre o edifício, plantas, valores, localização, lazer, financiamento. Respondo na hora.',
   },
 ];
 
@@ -124,7 +124,7 @@ function Concierge() {
     setLoading(true);
     setError(null);
 
-    // Build prompt — system context + chat history
+    // Build prompt, system context + chat history
     const history = newHistory
       .map(m => `${m.role === 'user' ? 'Pessoa' : 'Concierge'}: ${m.content}`)
       .join('\n\n');

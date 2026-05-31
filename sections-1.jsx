@@ -4,13 +4,11 @@
 const { useState: useState1, useEffect: useEffect1 } = React;
 
 /* ------------------------------------------------------------------ */
-/* Nav — sticky, scroll-spy                                            */
+/* Nav, sticky, scroll-spy                                            */
 /* ------------------------------------------------------------------ */
 const NAV_ITEMS = [
-  { id: 'porque',   label: 'Por que agora' },
   { id: 'edificio', label: 'Edifício' },
   { id: 'plantas',  label: 'Plantas' },
-  { id: 'lazer',    label: 'Lazer' },
   { id: 'galeria',  label: 'Galeria' },
   { id: 'local',    label: 'Localização' },
   { id: 'contato',  label: 'Contato' },
@@ -114,7 +112,7 @@ function Hero({ variant = 'scrollytell' }) {
   return <HeroWordmark />;
 }
 
-/* Default — giant Kairós wordmark dominating + soft render behind */
+/* Default, giant Kairós wordmark dominating + soft render behind */
 function HeroWordmark() {
   return (
     <section
@@ -173,7 +171,7 @@ function HeroWordmark() {
         </div>
       </div>
 
-      {/* The wordmark — fills the canvas */}
+      {/* The wordmark, fills the canvas */}
       <div style={{
         position: 'relative',
         flex: 1,
@@ -250,7 +248,7 @@ function HeroWordmark() {
   );
 }
 
-/* Building facade SVG — placeholder render with architectural feel */
+/* Building facade SVG, placeholder render with architectural feel */
 function BuildingFacade() {
   return (
     <svg viewBox="0 0 200 380" preserveAspectRatio="xMidYMax meet"
@@ -469,23 +467,15 @@ function Intro() {
           <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
             <Eyebrow>O Edifício Kairós</Eyebrow>
             <p className="t-body-lg" style={{ color: 'var(--fg-2)', maxWidth: 560 }}>
-              Cinco tipologias, 87 a 149 m², lazer completo, a cinco minutos da praia de
-              Jatiúca. As últimas unidades estão disponíveis direto com a{' '}
-              <strong style={{ color: 'var(--accent)', fontWeight: 700 }}>Construtora Delman</strong>,
-              com chaves na hora e financiamento facilitado.
+              Empreendimento já entregue a cinco minutos da Praia de Jatiúca, com
+              apartamentos amplos com até 3 suítes, lazer completo, parcelamento em
+              qualquer banco ou em até 100 meses, direto com a{' '}
+              <strong style={{ color: 'var(--accent)', fontWeight: 700 }}>Construtora Delman</strong>.
             </p>
             <div style={{ borderLeft: '3px solid var(--accent)', paddingLeft: 24 }}>
-              <h2 className="t-display-2" style={{ color: 'var(--fg-1)', lineHeight: 1 }}>
-                Construtora <span className="t-serif" style={{ color: 'var(--accent)' }}>Delman</span>
+              <h2 className="t-display-2" style={{ color: 'var(--fg-1)', lineHeight: 1.05 }}>
+                Qualidade de quem constrói há <span className="t-serif" style={{ color: 'var(--accent)' }}>40 anos</span> em Maceió.
               </h2>
-              <p className="t-serif" style={{
-                fontStyle: 'italic',
-                fontSize: 'clamp(18px, 2vw, 26px)',
-                color: 'var(--fg-2)',
-                marginTop: 14,
-              }}>
-                Há mais de 40 anos construindo em Maceió.
-              </p>
             </div>
           </div>
           <div className="reveal reveal--delay-1">
@@ -506,7 +496,7 @@ function Intro() {
 }
 
 /* ------------------------------------------------------------------ */
-/* STATS — ficha rápida                                                */
+/* STATS, ficha rápida                                                */
 /* ------------------------------------------------------------------ */
 function Stats() {
   const rows = [

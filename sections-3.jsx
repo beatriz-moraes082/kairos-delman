@@ -4,7 +4,7 @@
 const { useState: useState3, useEffect: useEffect3, useRef: useRef3 } = React;
 
 /* ------------------------------------------------------------------ */
-/* GALERIA — lightbox grid                                             */
+/* GALERIA, lightbox grid                                             */
 /* ------------------------------------------------------------------ */
 const GALLERY = [
   { caption: 'Espaço gourmet',       tone: 'sand',    ratio: '4/5', src: 'imagens/gourmet.jpg' },
@@ -39,15 +39,15 @@ function Galeria() {
       <div className="container">
         <div className="section-head">
           <div className="reveal">
-            <Eyebrow index="05">Galeria</Eyebrow>
+            <Eyebrow>Galeria e lazer</Eyebrow>
             <h2 className="t-display-2" style={{ marginTop: 16 }}>
-              Veja como<br/>
-              <span className="t-serif" style={{ color: 'var(--accent)' }}>ficou.</span>
+              Mais de 30 espaços<br/>
+              <span className="t-serif" style={{ color: 'var(--accent)' }}>para não querer sair.</span>
             </h2>
           </div>
           <aside className="reveal reveal--delay-1" style={{ color: 'var(--fg-2)', display: 'flex', alignItems: 'end' }}>
             <p style={{ fontSize: 14, maxWidth: 360, color: 'var(--fg-3)' }}>
-              Decorado pronto para visita no stand. Toque em qualquer imagem para ampliar.
+              Lazer completo, pronto para visita no stand. Toque em qualquer imagem para ampliar.
             </p>
           </aside>
         </div>
@@ -218,7 +218,7 @@ const GAL_LAYOUT = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* LOCALIZAÇÃO — interactive map                                       */
+/* LOCALIZAÇÃO, interactive map                                       */
 /* ------------------------------------------------------------------ */
 const POIS = [
   { id: 'praia',     label: 'Praia de Jatiúca',          dist: '5 min',  x: 78, y: 36, type: 'beach' },
@@ -244,7 +244,7 @@ function Localizacao() {
           </div>
           <aside className="reveal reveal--delay-1" style={{ color: 'var(--fg-2)' }}>
             <p className="t-body-lg" style={{ maxWidth: 520 }}>
-              Cinco minutos de carro até a faixa de areia. Caminhando, em menos de dez. Cercado pelos melhores restaurantes, padarias, academias e escolas do bairro — sem precisar pegar a Mangabeiras.
+              Cinco minutos de carro até a faixa de areia. Caminhando, em menos de dez. Cercado pelos melhores restaurantes, padarias, academias e escolas do bairro, sem precisar pegar a Mangabeiras.
             </p>
           </aside>
         </div>
@@ -381,7 +381,7 @@ function MapJatiuca({ pois, hover, setHover }) {
       {/* beach line */}
       <path d="M 380 500 Q 410 400 450 320 Q 490 220 540 120 Q 570 60 600 0"
             stroke="#E8DAB8" strokeWidth="20" fill="none" opacity="0.7"/>
-      {/* streets — grid */}
+      {/* streets, grid */}
       <g stroke="#D8CFBE" strokeWidth="1.2" fill="none">
         {[60, 120, 180, 240, 300, 360].map(y => (
           <line key={`h-${y}`} x1="0" y1={y} x2={Math.max(380, 600 - (y * 0.7))} y2={y} />
@@ -399,7 +399,7 @@ function MapJatiuca({ pois, hover, setHover }) {
       <text x="244" y="20" fontSize="9" fill="#8A7E73" fontFamily="serif" fontStyle="italic">Av. Álvaro Otacílio</text>
       <text x="520" y="60" fontSize="14" fill="#5A6B70" fontFamily="serif" fontStyle="italic" opacity="0.7">Atlântico</text>
 
-      {/* Building location — Kairós */}
+      {/* Building location, Kairós */}
       <g transform="translate(280, 200)">
         <circle r="18" fill="var(--accent)" opacity="0.18"/>
         <circle r="10" fill="var(--accent)" opacity="0.32"/>
@@ -498,7 +498,7 @@ function Sustentabilidade() {
           </div>
           <aside className="reveal reveal--delay-1" style={{ color: 'var(--fg-2)' }}>
             <p className="t-body-lg" style={{ maxWidth: 520 }}>
-              Energia solar, reuso de água, gerador automático nas áreas comuns. A conta no fim do mês — e o impacto fora dele — são bem menores aqui.
+              Energia solar, reuso de água, gerador automático nas áreas comuns. A conta no fim do mês, e o impacto fora dele, são bem menores aqui.
             </p>
           </aside>
         </div>

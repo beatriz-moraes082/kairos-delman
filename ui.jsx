@@ -4,7 +4,7 @@
 const { useState, useEffect, useRef, useMemo, useCallback, useLayoutEffect } = React;
 
 /* ------------------------------------------------------------------ */
-/* Eyebrow — small label with index + slash + title                    */
+/* Eyebrow, small label with index + slash + title                    */
 /* ------------------------------------------------------------------ */
 function Eyebrow({ index, children, style }) {
   return (
@@ -17,7 +17,7 @@ function Eyebrow({ index, children, style }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Kairós K monogram — serif italic, single glyph                      */
+/* Kairós K monogram, serif italic, single glyph                      */
 /* ------------------------------------------------------------------ */
 function KMark({ size = 28, color }) {
   return (
@@ -56,7 +56,7 @@ function KairosLockup({ light = false, compact = false }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Reveal — IntersectionObserver-driven fade-up                        */
+/* Reveal, IntersectionObserver-driven fade-up                        */
 /* ------------------------------------------------------------------ */
 function useReveal() {
   useEffect(() => {
@@ -74,7 +74,7 @@ function useReveal() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Image placeholder — sophisticated, with subject hint                */
+/* Image placeholder, sophisticated, with subject hint                */
 /* ------------------------------------------------------------------ */
 function ImgPlaceholder({ subject = 'imagem', tone = 'sand', ratio = '4/3', style, children, src, alt, fit = 'cover' }) {
   // tones: sand (default), sky, water, terra, dark, foliage
@@ -201,7 +201,7 @@ function CountUp({ to, prefix = '', suffix = '', duration = 1400 }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Asterisk-as-bullet (echoes the brand) — but architectural cross    */
+/* Asterisk-as-bullet (echoes the brand), but architectural cross    */
 /* ------------------------------------------------------------------ */
 function Cross({ size = 10, color = 'var(--accent)', style }) {
   return (

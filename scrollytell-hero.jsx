@@ -1,5 +1,5 @@
 /* global React, Cross */
-// Scrollytelling hero — wordmark pinned, narrative stages reveal on scroll.
+// Scrollytelling hero, wordmark pinned, narrative stages reveal on scroll.
 
 const { useState: useStateSH, useEffect: useEffectSH, useRef: useRefSH } = React;
 
@@ -99,7 +99,7 @@ function HeroScrollytell() {
           <ReadyBadge />
         </div>
 
-        {/* Wordmark — center stage */}
+        {/* Wordmark, center stage */}
         <div style={{
           flex: 1,
           display: 'flex',
@@ -123,13 +123,13 @@ function HeroScrollytell() {
             Kair<span style={{ color: 'var(--accent)' }}>ó</span>s
           </h1>
 
-          {/* Stats orbiting the wordmark — Stage 1 */}
+          {/* Stats orbiting the wordmark, Stage 1 */}
           <FloatingStats opacity={stage1} progress={progress}/>
 
-          {/* Manifesto — Stage 2 */}
+          {/* Manifesto, Stage 2 */}
           <Manifesto opacity={stage2}/>
 
-          {/* CTA cluster — Stage 3 */}
+          {/* CTA cluster, Stage 3 */}
           <CTACluster opacity={stage3}/>
         </div>
 
@@ -336,7 +336,7 @@ function CTACluster({ opacity }) {
   );
 }
 
-/* Progress dot indicator — shows which stage you're in */
+/* Progress dot indicator, shows which stage you're in */
 function StageIndicator({ progress }) {
   const stages = [0.0, 0.25, 0.6, 0.9];
   return (

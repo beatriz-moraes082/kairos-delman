@@ -28,36 +28,9 @@ function CTA() {
       }}>K</div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="section-head">
-          <div className="reveal">
-            <Eyebrow index="08" style={{ color: 'var(--k-terra-glow)' }}>Próximo passo</Eyebrow>
-            <h2 className="t-display-2" style={{ marginTop: 16, color: 'var(--fg-on-dark)' }}>
-              O Kairós<br/>
-              <span className="t-serif" style={{ color: 'var(--k-terra-glow)' }}>não espera.</span>
-            </h2>
-          </div>
-          <aside className="reveal reveal--delay-1" style={{ color: 'rgba(239,235,227,0.78)' }}>
-            <p className="t-body-lg" style={{ maxWidth: 520 }}>
-              O nome do prédio é uma provocação. Nas próximas semanas, mais unidades vão sair. Agende uma visita ou peça a tabela de preços atualizada — respondemos no mesmo dia.
-            </p>
-          </aside>
-        </div>
-
-        <div className="contato-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: '0.9fr 1.1fr',
-          gap: 'clamp(32px, 4vw, 64px)',
-          marginTop: 32,
-        }}>
-          <ContactChannels />
+        <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <PriceForm />
         </div>
-
-        <style>{`
-          @media (max-width: 920px) {
-            .contato-grid { grid-template-columns: 1fr !important; }
-          }
-        `}</style>
       </div>
     </section>
   );
@@ -82,7 +55,7 @@ function ContactChannels() {
           gap: 8,
           transition: 'border-color 200ms, background 200ms',
         }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--k-terra-glow)'; e.currentTarget.style.background = 'rgba(181,51,63,0.10)'; }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--k-terra-glow)'; e.currentTarget.style.background = 'rgba(139,35,50,0.10)'; }}
         onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -111,7 +84,7 @@ function ContactChannels() {
           gap: 8,
           transition: 'border-color 200ms, background 200ms',
         }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--k-terra-glow)'; e.currentTarget.style.background = 'rgba(181,51,63,0.10)'; }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--k-terra-glow)'; e.currentTarget.style.background = 'rgba(139,35,50,0.10)'; }}
         onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -247,7 +220,7 @@ function PriceForm() {
                 Receba a tabela de preços.
               </h3>
               <p style={{ fontSize: 13, color: 'var(--fg-3)', marginTop: 6 }}>
-                Plantas detalhadas, valores e condições — direto no seu e-mail.
+                Plantas detalhadas, valores e condições, direto no seu e-mail.
               </p>
             </div>
             <div style={{ fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.22em', fontWeight: 500 }}>
@@ -517,8 +490,17 @@ function Footer() {
           flexWrap: 'wrap', gap: 16,
           fontSize: 11, letterSpacing: '0.04em', color: 'var(--fg-3)',
         }}>
-          <div>© Delman Construtora · CRECI-AL 0000</div>
-          <div>Imagens ilustrativas. Memorial descritivo disponível no stand.</div>
+          <div>© Delman Construtora</div>
+          <a href="https://trilhaperformance.com.br" target="_blank" rel="noopener noreferrer"
+             style={{
+               display: 'inline-flex', alignItems: 'center', gap: 8,
+               color: 'var(--fg-3)', borderBottom: 'none', textDecoration: 'none',
+             }}>
+            <span>Desenvolvido pela</span>
+            <img src="imagens/trilha-logo.png" alt="Trilha"
+                 style={{ height: 18, width: 'auto', display: 'block' }}
+                 onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.insertAdjacentHTML('afterend', '<strong style=\"color:var(--fg-2)\">Trilha</strong>'); }} />
+          </a>
         </div>
       </div>
       <style>{`

@@ -51,10 +51,8 @@ function App() {
         <Hero variant={tweaks.hero} />
         <Intro />
         <Stats />
-        <WhyNow />
         <FloorSelector />
         <Plantas layout={tweaks.plantas} />
-        <Lazer />
         <Galeria />
         <Localizacao />
         <Sustentabilidade />
@@ -71,11 +69,11 @@ function App() {
             value={tweaks.bg}
             onChange={v => setTweak('bg', v)}
             options={[
-              { value: 'pedra',   label: 'Pedra — cinza-fria (padrão)' },
-              { value: 'algodao', label: 'Algodão — branco puro' },
-              { value: 'areia',   label: 'Areia — bege quente' },
-              { value: 'blush',   label: 'Blush — eco do bordô' },
-              { value: 'grafite', label: 'Grafite — modo escuro' },
+              { value: 'pedra',   label: 'Pedra, cinza-fria (padrão)' },
+              { value: 'algodao', label: 'Algodão, branco puro' },
+              { value: 'areia',   label: 'Areia, bege quente' },
+              { value: 'blush',   label: 'Blush, eco do bordô' },
+              { value: 'grafite', label: 'Grafite, modo escuro' },
             ]}
           />
         </TweakSection>

@@ -4,7 +4,7 @@
 const { useState: useState2, useEffect: useEffect2, useMemo: useMemo2 } = React;
 
 /* ------------------------------------------------------------------ */
-/* WHY NOW — 4 cards + banner                                          */
+/* WHY NOW, 4 cards + banner                                          */
 /* ------------------------------------------------------------------ */
 function WhyNow() {
   const cards = [
@@ -16,7 +16,7 @@ function WhyNow() {
     {
       n: '02',
       title: 'Você vê antes de comprar',
-      body: 'Cada acabamento, cada vista, cada andar — tudo o que está no folder existe e está exatamente como você vai receber.',
+      body: 'Cada acabamento, cada vista, cada andar, tudo o que está no folder existe e está exatamente como você vai receber.',
     },
     {
       n: '03',
@@ -199,7 +199,7 @@ function Plantas({ layout = 'cards' }) {
   );
 }
 
-/* Tabs/cards layout — visual planta + tabs */
+/* Tabs/cards layout, visual planta + tabs */
 function PlantasCards() {
   const [active, setActive] = useState2(0);
   const p = PLANTAS[active];
@@ -449,7 +449,7 @@ function StatusBadge({ children, tone = 'ok' }) {
   );
 }
 
-/* Stylized planta sketch — architectural floor plan */
+/* Stylized planta sketch, architectural floor plan */
 function PlantaSketch({ type = '01', compact = false }) {
   // Different layouts per type
   const layouts = {
@@ -541,7 +541,7 @@ function PlantaSketch({ type = '01', compact = false }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* LAZER — counters + categorized cards                                */
+/* LAZER, counters + categorized cards                                */
 /* ------------------------------------------------------------------ */
 const LAZER_COUNTERS = [
   { value: 4,  label: 'Piscinas e áreas molhadas', plus: false },

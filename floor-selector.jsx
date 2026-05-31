@@ -1,9 +1,9 @@
 /* global React, Cross, Eyebrow, StatusBadge */
-// Edifício — elevação interativa com 13 andares × 6 unidades
+// Edifício, elevação interativa com 13 andares × 6 unidades
 
 const { useState: useStateFS, useMemo: useMemoFS } = React;
 
-/* Unit catalog — 13 floors × 6 units. Top = cobertura (3 large units).
+/* Unit catalog, 13 floors × 6 units. Top = cobertura (3 large units).
    Status codes: 'avail' | 'reserved' | 'sold' */
 const FLOOR_COUNT = 13;
 function buildInventory() {
@@ -26,7 +26,7 @@ function buildInventory() {
         ['05', '97m²',  '97m² 3 suítes'],
         ['06', '87m²',  '87m² 3q · 2 suítes'],
       ].forEach(([n, area, type], i) => {
-        // Deterministic pseudo-random status — most available, some sold/reserved
+        // Deterministic pseudo-random status, most available, some sold/reserved
         const rnd = (seed * (i + 1) * 13) % 100;
         let status = 'avail';
         if (rnd < 18) status = 'sold';
@@ -63,10 +63,10 @@ function FloorSelector() {
       <div className="container">
         <div className="section-head">
           <div className="reveal">
-            <Eyebrow index="02">Edifício · disponibilidade</Eyebrow>
+            <Eyebrow>Edifício</Eyebrow>
             <h2 className="t-display-2" style={{ marginTop: 16 }}>
-              Cada janela,<br/>
-              <span className="t-serif" style={{ color: 'var(--accent)' }}>uma posição.</span>
+              Várias formas<br/>
+              <span className="t-serif" style={{ color: 'var(--accent)' }}>pra chamar de seu.</span>
             </h2>
           </div>
           <aside className="reveal reveal--delay-1" style={{ color: 'var(--fg-2)' }}>
@@ -118,7 +118,7 @@ function FloorSelector() {
   );
 }
 
-/* The building drawing — SVG elevation, 13 stories */
+/* The building drawing, SVG elevation, 13 stories */
 function BuildingElevation({ inventory, hover, selected, onHover, onSelect }) {
   // Layout constants
   const W = 480;           // total width
@@ -277,7 +277,7 @@ function BuildingElevation({ inventory, hover, selected, onHover, onSelect }) {
         <text x="-16" y="3" textAnchor="end" fontSize="7" fill="var(--fg-3)">O</text>
       </g>
 
-      {/* Vista hint — beach is to the east */}
+      {/* Vista hint, beach is to the east */}
       <g transform={`translate(${W - 24}, ${topPad + floorH * 5})`} opacity="0.7">
         <text x="0" y="0" fontSize="8" fill="var(--fg-3)" textAnchor="middle"
               writingMode="tb" letterSpacing="0.2em" style={{ writingMode: 'vertical-rl' }}>
@@ -336,13 +336,13 @@ function Legend({ counts }) {
   );
 }
 
-/* Right-side detail panel — shows the unit's specs */
+/* Right-side detail panel, shows the unit's specs */
 function UnitDetail({ unit, onClose }) {
   if (!unit) return <EmptyHint />;
 
   const status = unit.status;
   const isCob = unit.type === 'cobertura';
-  // synth pricing — varies by andar + tipologia
+  // synth pricing, varies by andar + tipologia
   const pricing = isCob
     ? 'A partir de R$ 2,4 mi'
     : unit.area === '97m²'

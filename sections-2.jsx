@@ -169,8 +169,8 @@ function Plantas({ layout = 'cards' }) {
           <div className="reveal">
             <Eyebrow index="03">Plantas</Eyebrow>
             <h2 className="t-display-2" style={{ marginTop: 16 }}>
-              Cinco formas de chamar<br/>
-              <span className="t-serif" style={{ color: 'var(--accent)' }}>de seu.</span>
+              Cinco plantas,<br/>
+              <span className="t-serif" style={{ color: 'var(--accent)' }}>uma é a sua.</span>
             </h2>
           </div>
           <aside className="reveal reveal--delay-1" style={{ color: 'var(--fg-2)' }}>

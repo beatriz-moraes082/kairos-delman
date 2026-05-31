@@ -500,7 +500,7 @@ function Intro() {
 /* ------------------------------------------------------------------ */
 function Stats() {
   const rows = [
-    { label: 'Tipologia',    main: '3 quartos',         sub: '87 a 149 m²' },
+    { label: 'Tipologia',    main: 'Até 3 suítes',      sub: '87 a 149 m²' },
     { label: 'Localização',  main: '5 min',             sub: 'da praia de Jatiúca' },
     { label: 'Status',       main: 'Pronto',            sub: 'Entrega imediata' },
     { label: 'Construtora',  main: '40 anos',           sub: 'Delman, em Maceió' },

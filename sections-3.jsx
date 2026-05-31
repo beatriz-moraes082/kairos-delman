@@ -256,16 +256,19 @@ function Localizacao() {
           marginTop: 24,
           alignItems: 'stretch',
         }}>
-          {/* Map */}
+          {/* Map — foto aérea real do entorno (mapa do book) */}
           <div className="reveal" style={{
-            background: 'var(--bg-2)',
+            background: 'var(--k-cocoa)',
             border: '1px solid var(--border)',
             borderRadius: 6,
-            padding: 24,
+            overflow: 'hidden',
             position: 'relative',
             minHeight: 520,
           }}>
-            <MapJatiuca pois={POIS} hover={hover} setHover={setHover}/>
+            <img src="imagens/mapa-jatiuca.jpg"
+                 alt="Mapa de Jatiúca: Edifício Kairós, Maceió Shopping, Parque da Mulher e o entorno"
+                 loading="lazy"
+                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             <div style={{
               position: 'absolute',
               top: 24, left: 24,
@@ -281,13 +284,6 @@ function Localizacao() {
               fontWeight: 500,
             }}>
               Jatiúca · Maceió · AL
-            </div>
-            <div style={{
-              position: 'absolute', bottom: 24, right: 24,
-              fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-              fontSize: 12, color: 'var(--fg-3)',
-            }}>
-              09°39′52″S · 35°42′24″W
             </div>
           </div>
 

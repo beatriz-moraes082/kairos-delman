@@ -1,0 +1,16 @@
+# Vídeos originais (material-fonte — são vários GB, não versionar)
+Drone*/
+Ambientes*/
+*.MP4
+*.MOV
+*.mp4
+*.mov
+
+# macOS
+.DS_Store
+
+# Temporários de processamento de mídia
+_work/
+
+# Config local do Claude Code (específica da máquina)
+.claude/settings.local.json

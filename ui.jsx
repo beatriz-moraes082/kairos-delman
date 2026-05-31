@@ -36,45 +36,21 @@ function KMark({ size = 28, color }) {
   );
 }
 
-/* Full lockup: K + wordmark "Kairós" + tagline "DELMAN" */
+/* Brand lockup: imagem real Delman + Edifício Kairós.
+   light=true usa a versão branca (sobre fundo escuro/foto); senão a versão navy (sobre fundo claro). */
 function KairosLockup({ light = false, compact = false }) {
-  const inkColor = light ? 'var(--fg-on-dark)' : 'var(--fg-1)';
-  const accColor = 'var(--accent)';
   return (
     <a href="#top" style={{
       display: 'inline-flex',
       alignItems: 'center',
-      gap: 10,
       textDecoration: 'none',
-      color: inkColor,
       borderBottom: 'none',
     }}>
-      <span style={{
-        fontFamily: 'var(--font-serif)',
-        fontStyle: 'italic',
-        fontWeight: 700,
-        fontSize: compact ? 26 : 30,
-        color: accColor,
-        lineHeight: 1,
-        letterSpacing: '-0.02em',
-        transform: 'translateY(-1px)',
-      }}>K</span>
-      <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1, gap: 2 }}>
-        <span style={{
-          fontFamily: 'var(--font-display)',
-          fontWeight: 700,
-          fontSize: compact ? 17 : 19,
-          letterSpacing: '-0.01em',
-          color: inkColor,
-        }}>Kairós</span>
-        <span style={{
-          fontSize: 9,
-          letterSpacing: '0.28em',
-          color: 'var(--fg-3)',
-          textTransform: 'uppercase',
-          fontWeight: 500,
-        }}>Delman</span>
-      </span>
+      <img
+        src={light ? 'imagens/brand-lockup.png' : 'imagens/brand-lockup-navy.png'}
+        alt="Delman · Edifício Kairós"
+        style={{ height: compact ? 40 : 46, width: 'auto', display: 'block' }}
+      />
     </a>
   );
 }

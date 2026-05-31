@@ -11,6 +11,11 @@ Ambientes*/
 
 # Temporários de processamento de mídia
 _work/
+_logos/
+
+# Book/folder PDF (material-fonte das logos — pesado)
+*.pdf
 
 # Config local do Claude Code (específica da máquina)
 .claude/settings.local.json
+_vista/

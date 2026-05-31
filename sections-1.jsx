@@ -46,7 +46,7 @@ function Nav({ activeSection }) {
         height: 72,
         gap: 24,
       }}>
-        <KairosLockup compact />
+        <KairosLockup compact light={!scrolled} />
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="nav-links">
           {NAV_ITEMS.map(item => (
@@ -235,15 +235,6 @@ function HeroWordmark() {
           </p>
         </div>
 
-        <div className="t-quote editorial-only" style={{
-          maxWidth: 320,
-          fontSize: 16,
-          textAlign: 'right',
-          color: 'var(--fg-2)',
-        }}>
-          Para quem valoriza qualidade, estilo e morar bem.
-        </div>
-
         <a href="#plantas" className="btn btn--accent btn--lg" style={{ borderBottom: 'none' }}>
           Escolher unidade
           <span className="arrow">→</span>
@@ -389,31 +380,24 @@ function HeroFullbleed() {
         position: 'relative', zIndex: 2,
         paddingTop: 120, paddingBottom: 64,
         minHeight: '100vh',
-        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
       }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <Eyebrow index="00" style={{ color: 'rgba(255,255,255,0.7)' }}>
+        <div>
+          <div style={{
+            display: 'inline-block',
+            background: 'rgba(0, 19, 63, 0.85)',
+            border: '1px solid rgba(255,255,255,0.14)',
+            borderRadius: 18,
+            padding: 'clamp(28px, 4vw, 48px) clamp(36px, 5.5vw, 64px)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+          }}>
+            <img src="imagens/brand-lockup.png" alt="Delman · Edifício Kairós"
+                 style={{ width: 'clamp(280px, 50vw, 520px)', height: 'auto', display: 'block' }}/>
+          </div>
+          <Eyebrow index="00" style={{ color: 'rgba(255,255,255,0.7)', marginTop: 28 }}>
             <span style={{ color: 'rgba(255,255,255,0.85)' }}>Jatiúca · Maceió · Pronto para morar</span>
           </Eyebrow>
-          <div style={{
-            padding: '8px 14px', background: 'var(--accent)',
-            fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 500, borderRadius: 999,
-          }}>Entrega imediata</div>
-        </div>
-        <div>
-          <h1 className="wordmark" style={{
-            fontSize: 'clamp(100px, 20vw, 320px)',
-            margin: 0,
-            color: '#fff',
-            lineHeight: 0.85,
-          }}>
-            Kair<span style={{ color: 'var(--k-terra-glow)' }}>ó</span>s
-          </h1>
-          <p className="t-body-lg editorial-only t-serif" style={{
-            color: 'rgba(255,255,255,0.9)', maxWidth: 540, marginTop: 24,
-          }}>
-            Para quem valoriza qualidade, estilo e morar bem.
-          </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 32 }}>
             <a href="#plantas" className="btn btn--accent btn--lg" style={{ borderBottom: 'none' }}>
               Escolher unidade <span className="arrow">→</span>

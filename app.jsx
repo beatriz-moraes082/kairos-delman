@@ -13,7 +13,7 @@ const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
   "density": "default",
   "plantas": "cards",
   "bg": "pedra",
-  "concierge": true
+  "concierge": false
 }/*EDITMODE-END*/;
 
 function App() {

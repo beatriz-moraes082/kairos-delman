@@ -28,9 +28,41 @@ function CTA() {
       }}>K</div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <PriceForm />
+        <div className="contato-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'clamp(32px, 5vw, 72px)',
+          alignItems: 'center',
+        }}>
+          <div className="reveal">
+            <Eyebrow style={{ color: 'var(--k-terra-glow)' }}>Últimas unidades</Eyebrow>
+            <h2 className="t-display-2" style={{ marginTop: 16, color: 'var(--fg-on-dark)' }}>
+              Garanta a sua<br/>
+              <span className="t-serif" style={{ color: 'var(--k-terra-glow)' }}>antes que acabe.</span>
+            </h2>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '32px 0 0', display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {[
+                'Pronto para morar, chaves na hora',
+                'Parcele em até 100 meses, direto com a Construtora Delman',
+                'A cinco minutos da Praia de Jatiúca',
+              ].map((t) => (
+                <li key={t} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', color: 'rgba(239,235,227,0.88)', fontSize: 16 }}>
+                  <span aria-hidden="true" style={{ color: 'var(--k-terra-glow)', fontFamily: 'var(--font-serif)', fontStyle: 'italic', lineHeight: 1.4 }}>✦</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="reveal reveal--delay-1">
+            <PriceForm />
+          </div>
         </div>
+
+        <style>{`
+          @media (max-width: 920px) {
+            .contato-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </div>
     </section>
   );

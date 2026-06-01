@@ -458,37 +458,131 @@ function Intro() {
   return (
     <section className="section" style={{ paddingTop: 'var(--space-9)', paddingBottom: 'var(--space-8)' }}>
       <div className="container">
-        <div style={{
+        <div className="intro-grid" style={{
           display: 'grid',
-          gridTemplateColumns: '1.2fr 0.9fr',
-          gap: 'clamp(32px, 5vw, 72px)',
-          alignItems: 'center',
-        }} className="intro-grid">
-          <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
+          gridTemplateColumns: '0.8fr 1.2fr',
+          gap: 'clamp(24px, 4vw, 64px)',
+          alignItems: 'start',
+        }}>
+          <div className="reveal">
             <Eyebrow>O Edifício Kairós</Eyebrow>
-            <p className="t-body-lg" style={{ color: 'var(--fg-2)', maxWidth: 560 }}>
-              Empreendimento já entregue a cinco minutos da Praia de Jatiúca, com
-              apartamentos amplos com até 3 suítes, lazer completo, parcelamento em
-              qualquer banco ou em até 100 meses, direto com a{' '}
-              <strong style={{ color: 'var(--accent)', fontWeight: 700 }}>Construtora Delman</strong>.
-            </p>
-            <div style={{ borderLeft: '3px solid var(--accent)', paddingLeft: 24 }}>
-              <h2 className="t-display-2" style={{ color: 'var(--fg-1)', lineHeight: 1.05 }}>
-                Qualidade de quem constrói há <span className="t-serif" style={{ color: 'var(--accent)' }}>40 anos</span> em Maceió.
-              </h2>
-            </div>
           </div>
           <div className="reveal reveal--delay-1">
-            <ImgPlaceholder subject="Construtora Delman" tone="sand" ratio="4/5"
-                            src="imagens/construtora-delman.jpg"
-                            alt="Fundador da Construtora Delman"
-                            style={{ width: '100%' }} />
+            <p style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 500,
+              fontSize: 'clamp(22px, 2.8vw, 34px)',
+              lineHeight: 1.3,
+              letterSpacing: '-0.01em',
+              color: 'var(--fg-1)',
+              maxWidth: 720,
+            }}>
+              Empreendimento <span className="t-serif" style={{ color: 'var(--accent)', fontWeight: 400 }}>já entregue</span> a
+              cinco minutos da Praia de Jatiúca, com apartamentos amplos de até 3 suítes
+              e lazer completo. Parcelamento em qualquer banco ou em até 100 meses,
+              direto com a Construtora Delman.
+            </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 36 }}>
+              <a href="#plantas" className="btn btn--accent" style={{ borderBottom: 'none' }}>
+                Escolher unidade <span className="arrow">→</span>
+              </a>
+              <a href="https://wa.me/5582996823219?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Edif%C3%ADcio%20Kair%C3%B3s."
+                 target="_blank" rel="noopener noreferrer"
+                 className="btn btn--ghost" style={{ borderBottom: 'none' }}>
+                Falar no WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <style>{`
         @media (max-width: 900px) {
-          .intro-grid { grid-template-columns: 1fr !important; }
+          .intro-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* INSTITUCIONAL — Construtora Delman, 40 anos                         */
+/* ------------------------------------------------------------------ */
+function Institucional() {
+  const numeros = [
+    { n: '40', sufixo: 'anos', label: 'construindo em Maceió' },
+    { n: '+50', sufixo: '', label: 'empreendimentos entregues' },
+    { n: '100%', sufixo: '', label: 'no prazo, prontos para morar' },
+  ];
+  return (
+    <section id="construtora" data-screen-label="Construtora" className="section section--dark" style={{ overflow: 'hidden' }}>
+      <div className="container">
+        <div className="instit-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '0.85fr 1fr',
+          gap: 'clamp(32px, 5vw, 72px)',
+          alignItems: 'center',
+        }}>
+          {/* Foto do fundador */}
+          <div className="reveal" style={{ position: 'relative' }}>
+            <ImgPlaceholder subject="Construtora Delman" tone="dark" ratio="4/5"
+                            src="imagens/construtora-delman.jpg"
+                            alt="Fundador da Construtora Delman"
+                            style={{ width: '100%', borderRadius: 'var(--radius-md)' }} />
+            <div style={{
+              position: 'absolute', left: 0, bottom: 24,
+              background: 'var(--accent)', color: 'var(--fg-on-accent)',
+              padding: '10px 18px',
+              fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 600,
+            }}>
+              Construtora Delman
+            </div>
+          </div>
+
+          {/* Texto institucional */}
+          <div className="reveal reveal--delay-1" style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+            <Eyebrow style={{ color: 'var(--k-terra-glow)' }}>A construtora</Eyebrow>
+            <h2 className="t-display-2" style={{ color: 'var(--fg-on-dark)', lineHeight: 1.05 }}>
+              Qualidade de quem constrói há <span className="t-serif" style={{ color: 'var(--k-terra-glow)' }}>40 anos</span> em Maceió.
+            </h2>
+            <p className="t-body-lg" style={{ color: 'rgba(239,235,227,0.82)', maxWidth: 540 }}>
+              Há quatro décadas a Delman constrói bairros, gerações e relações de confiança
+              em Maceió. Cada entrega carrega o mesmo compromisso: acabamento de verdade,
+              prazo cumprido e o cuidado de quem constrói para durar. O Edifício Kairós é
+              o mais novo capítulo dessa história.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 1,
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              marginTop: 8,
+            }} className="instit-nums">
+              {numeros.map((item) => (
+                <div key={item.label} style={{ background: 'var(--bg-invert)', padding: '24px 20px' }}>
+                  <div style={{
+                    fontFamily: 'var(--font-display)', fontWeight: 700,
+                    fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1,
+                    color: 'var(--k-cream)', letterSpacing: '-0.02em',
+                  }}>
+                    {item.n}{item.sufixo && <span style={{ fontSize: '0.5em', marginLeft: 4 }}>{item.sufixo}</span>}
+                  </div>
+                  <div style={{ marginTop: 10, fontSize: 12, color: 'rgba(239,235,227,0.7)', lineHeight: 1.4 }}>
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 900px) {
+          .instit-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 520px) {
+          .instit-nums { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
@@ -558,4 +652,4 @@ function Stats() {
   );
 }
 
-Object.assign(window, { Nav, Hero, Intro, Stats, NAV_ITEMS });
+Object.assign(window, { Nav, Hero, Intro, Institucional, Stats, NAV_ITEMS });

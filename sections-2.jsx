@@ -451,87 +451,114 @@ function StatusBadge({ children, tone = 'ok' }) {
 
 /* Stylized planta sketch, architectural floor plan */
 function PlantaSketch({ type = '01', compact = false }) {
-  // Different layouts per type
+  // Paleta da planta — alinhada ao design system (cinza-frio + acento vinho)
+  const ROOM = '#F4F4F2';      // ambientes (off-white frio)
+  const LIVING = '#ECECEA';    // social (um tom abaixo)
+  const WET = '#E0E2E4';       // cozinha/áreas molhadas (leve azulado)
+  const WALL = '#1A1817';      // paredes externas (carvão)
+  const DIV = '#C4C2BC';       // divisórias internas
+  const INK = '#4A4744';       // textos
+  const VAR = 'rgba(139,35,50,0.12)';   // varanda — tinta vinho suave
+  const VARSTROKE = '#8B2332';
+
   const layouts = {
     '01': (
       <g>
-        <rect x="20" y="20" width="160" height="100" fill="#FBF8F1" stroke="#5A4F47" strokeWidth="1.2"/>
-        {/* living */}
-        <rect x="20" y="20" width="80" height="60" fill="#F2EAD5" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="60" y="55" textAnchor="middle" fontSize="6" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Living</text>
-        {/* cozinha */}
-        <rect x="20" y="80" width="50" height="40" fill="#E8DEC6" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="45" y="103" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Cozinha</text>
-        {/* suite */}
-        <rect x="100" y="20" width="80" height="50" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="140" y="48" textAnchor="middle" fontSize="6" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte master</text>
-        {/* suite 2 */}
-        <rect x="70" y="80" width="60" height="40" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="100" y="103" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte 2</text>
-        {/* quarto */}
-        <rect x="130" y="70" width="50" height="50" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="155" y="98" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Quarto</text>
-        {/* varanda */}
-        <rect x="20" y="120" width="160" height="14" fill="#D6C9B2" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="100" y="130" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Varanda</text>
+        <rect x="20" y="20" width="160" height="100" fill={ROOM} stroke={WALL} strokeWidth="1.4"/>
+        <rect x="20" y="20" width="80" height="60" fill={LIVING} stroke={DIV} strokeWidth="0.6"/>
+        <text x="60" y="54" textAnchor="middle" fontSize="6" fill={INK} fontFamily="serif" fontStyle="italic">Living</text>
+        <rect x="20" y="80" width="50" height="40" fill={WET} stroke={DIV} strokeWidth="0.6"/>
+        <text x="45" y="103" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Cozinha</text>
+        <rect x="100" y="20" width="80" height="50" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="140" y="47" textAnchor="middle" fontSize="6" fill={INK} fontFamily="serif" fontStyle="italic">Suíte master</text>
+        <rect x="70" y="80" width="60" height="40" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="100" y="103" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte 2</text>
+        <rect x="130" y="70" width="50" height="50" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="155" y="98" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Quarto</text>
+        <rect x="20" y="120" width="160" height="14" fill={VAR} stroke={VARSTROKE} strokeWidth="0.7"/>
+        <text x="100" y="130" textAnchor="middle" fontSize="5" fill={VARSTROKE} fontFamily="serif" fontStyle="italic">Varanda</text>
       </g>
     ),
     '02': (
       <g>
-        <rect x="20" y="20" width="160" height="100" fill="#FBF8F1" stroke="#5A4F47" strokeWidth="1.2"/>
-        <rect x="20" y="20" width="100" height="60" fill="#F2EAD5" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="70" y="55" textAnchor="middle" fontSize="6" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Living amplo</text>
-        <rect x="120" y="20" width="60" height="40" fill="#E8DEC6" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="150" y="43" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Cozinha</text>
-        <rect x="120" y="60" width="60" height="50" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="150" y="87" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte master</text>
-        <rect x="20" y="80" width="60" height="40" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="50" y="103" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte 2</text>
-        <rect x="80" y="80" width="40" height="40" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="100" y="103" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte 3</text>
-        <rect x="20" y="120" width="160" height="16" fill="#D6C9B2" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="100" y="131" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Varanda ampla</text>
+        <rect x="20" y="20" width="160" height="100" fill={ROOM} stroke={WALL} strokeWidth="1.4"/>
+        <rect x="20" y="20" width="100" height="60" fill={LIVING} stroke={DIV} strokeWidth="0.6"/>
+        <text x="70" y="54" textAnchor="middle" fontSize="6" fill={INK} fontFamily="serif" fontStyle="italic">Living amplo</text>
+        <rect x="120" y="20" width="60" height="40" fill={WET} stroke={DIV} strokeWidth="0.6"/>
+        <text x="150" y="43" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Cozinha</text>
+        <rect x="120" y="60" width="60" height="50" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="150" y="87" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte master</text>
+        <rect x="20" y="80" width="60" height="40" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="50" y="103" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte 2</text>
+        <rect x="80" y="80" width="40" height="40" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="100" y="103" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte 3</text>
+        <rect x="20" y="120" width="160" height="16" fill={VAR} stroke={VARSTROKE} strokeWidth="0.7"/>
+        <text x="100" y="131" textAnchor="middle" fontSize="5" fill={VARSTROKE} fontFamily="serif" fontStyle="italic">Varanda ampla</text>
       </g>
     ),
     '03': (
       <g>
-        <rect x="10" y="20" width="180" height="100" fill="#FBF8F1" stroke="#5A4F47" strokeWidth="1.2"/>
-        <rect x="10" y="20" width="120" height="60" fill="#F2EAD5" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="70" y="55" textAnchor="middle" fontSize="6" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Living duplo</text>
-        <rect x="130" y="20" width="60" height="40" fill="#E8DEC6" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="160" y="43" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Cozinha</text>
-        <rect x="130" y="60" width="60" height="60" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="160" y="93" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte master</text>
-        <rect x="10" y="80" width="55" height="40" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="38" y="103" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte 2</text>
-        <rect x="65" y="80" width="65" height="40" fill="#F5EDE0" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="97" y="103" textAnchor="middle" fontSize="5" fill="#5A4F47" fontFamily="serif" fontStyle="italic">Suíte 3</text>
-        <rect x="10" y="120" width="180" height="24" fill="#C5A876" stroke="#8A7E73" strokeWidth="0.6"/>
-        <text x="100" y="135" textAnchor="middle" fontSize="6" fill="#3A322B" fontFamily="serif" fontStyle="italic">Varanda gourmet 28m²</text>
+        <rect x="10" y="20" width="180" height="100" fill={ROOM} stroke={WALL} strokeWidth="1.4"/>
+        <rect x="10" y="20" width="120" height="60" fill={LIVING} stroke={DIV} strokeWidth="0.6"/>
+        <text x="70" y="54" textAnchor="middle" fontSize="6" fill={INK} fontFamily="serif" fontStyle="italic">Living duplo</text>
+        <rect x="130" y="20" width="60" height="40" fill={WET} stroke={DIV} strokeWidth="0.6"/>
+        <text x="160" y="43" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Cozinha</text>
+        <rect x="130" y="60" width="60" height="60" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="160" y="93" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte master</text>
+        <rect x="10" y="80" width="55" height="40" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="38" y="103" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte 2</text>
+        <rect x="65" y="80" width="65" height="40" fill={ROOM} stroke={DIV} strokeWidth="0.6"/>
+        <text x="97" y="103" textAnchor="middle" fontSize="5" fill={INK} fontFamily="serif" fontStyle="italic">Suíte 3</text>
+        <rect x="10" y="120" width="180" height="24" fill={VAR} stroke={VARSTROKE} strokeWidth="0.9"/>
+        <text x="100" y="135" textAnchor="middle" fontSize="6" fill={VARSTROKE} fontFamily="serif" fontStyle="italic">Varanda gourmet 28m²</text>
       </g>
     ),
   };
 
   return (
-    <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', padding: compact ? 12 : 24, borderRadius: 6 }}>
+    <div style={{
+      background: 'linear-gradient(160deg, var(--k-cream) 0%, var(--bg-2) 100%)',
+      border: '1px solid var(--border)',
+      padding: compact ? 14 : 'clamp(24px, 3vw, 40px)',
+      borderRadius: 'var(--radius-md)',
+      boxShadow: compact ? 'none' : 'var(--shadow-2)',
+      position: 'relative',
+    }}>
+      {/* cantos de moldura técnica */}
+      {!compact && ['tl','tr','bl','br'].map(c => (
+        <span key={c} aria-hidden="true" style={{
+          position: 'absolute', width: 14, height: 14,
+          borderColor: 'var(--accent)', borderStyle: 'solid',
+          borderWidth: c==='tl' ? '1px 0 0 1px' : c==='tr' ? '1px 1px 0 0' : c==='bl' ? '0 0 1px 1px' : '0 1px 1px 0',
+          top: c[0]==='t' ? 14 : 'auto', bottom: c[0]==='b' ? 14 : 'auto',
+          left: c[1]==='l' ? 14 : 'auto', right: c[1]==='r' ? 14 : 'auto',
+          opacity: 0.5,
+        }}/>
+      ))}
       <svg viewBox="0 0 200 160" style={{ width: '100%', height: 'auto', display: 'block' }}>
+        <defs>
+          <pattern id="planta-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#000" strokeWidth="0.2" opacity="0.04"/>
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="200" height="160" fill="url(#planta-grid)"/>
         {/* compass */}
         <g transform="translate(184,12)">
-          <circle r="6" fill="none" stroke="#8A7E73" strokeWidth="0.4"/>
-          <path d="M0 -6 L 0 6 M -6 0 L 6 0" stroke="#8A7E73" strokeWidth="0.4"/>
-          <text x="0" y="-7" textAnchor="middle" fontSize="3.5" fill="#8A7E73">N</text>
+          <circle r="6" fill="none" stroke="#8B2332" strokeWidth="0.5"/>
+          <path d="M0 -6 L 0 6 M -6 0 L 6 0" stroke="#8B2332" strokeWidth="0.4" opacity="0.6"/>
+          <text x="0" y="-7.5" textAnchor="middle" fontSize="3.5" fill="#8B2332" fontWeight="700">N</text>
         </g>
         {layouts[type]}
       </svg>
       {!compact && (
         <div style={{
-          display: 'flex', justifyContent: 'space-between',
-          paddingTop: 16, marginTop: 8,
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          paddingTop: 18, marginTop: 12,
           borderTop: '1px solid var(--border)',
           fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--fg-3)',
         }}>
-          <span>Tipo {type}</span>
-          <span className="t-serif" style={{ fontSize: 13, letterSpacing: 0, color: 'var(--fg-2)', textTransform: 'none' }}>
+          <span style={{ color: 'var(--accent)', fontWeight: 600 }}>Tipo {type}</span>
+          <span className="t-serif" style={{ fontSize: 13, letterSpacing: 0, color: 'var(--fg-2)', textTransform: 'none', fontStyle: 'italic' }}>
             Planta esquemática · medidas no memorial
           </span>
         </div>

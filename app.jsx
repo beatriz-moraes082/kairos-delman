@@ -1,5 +1,5 @@
 /* global React, ReactDOM,
-   Nav, Hero, Intro, Stats, WhyNow, Plantas, Lazer,
+   Nav, Hero, Intro, Institucional, Stats, WhyNow, Plantas, Lazer,
    Galeria, Localizacao, Sustentabilidade, CTA, Footer, FloatZap,
    FloorSelector, Concierge,
    NAV_ITEMS, useReveal,
@@ -55,6 +55,7 @@ function App() {
         <Plantas layout={tweaks.plantas} />
         <Galeria />
         <Localizacao />
+        <Institucional />
         <Sustentabilidade />
         <CTA />
       </main>

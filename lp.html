@@ -334,7 +334,7 @@
       <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5"/><circle cx="12" cy="14" r="4"/></svg></div>
         <h3>Lazer completo</h3>
-        <p>Piscina, academia, espaço gourmet, lounge, quadra e muito mais — sem sair de casa.</p>
+        <p>Piscina, academia, espaço gourmet, lounge, quadra e muito mais, sem sair de casa.</p>
       </div>
       <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
@@ -500,7 +500,7 @@
   // lead -> WhatsApp (sem backend: envia direto pra conversa)
   function enviarLead(e,origem){e.preventDefault();var f=e.target;
     var nome=f.nome.value.trim(),tel=f.tel.value.trim(),tipo=f.tipo.value;
-    var msg='Olá! Sou '+nome+' ('+tel+'). Tenho interesse no Edifício Kairós — '+tipo+'. Quero a tabela de preços.';
+    var msg='Olá! Sou '+nome+' ('+tel+'). Tenho interesse no Edifício Kairós, '+tipo+'. Quero a tabela de preços.';
     window.open('https://wa.me/5582996823219?text='+encodeURIComponent(msg),'_blank');
     return false;}
 

@@ -240,6 +240,63 @@
   .stagger.in>*:nth-child(5){transition-delay:.37s}
   .stagger.in>*:nth-child(6){transition-delay:.45s}
   @media(prefers-reduced-motion:reduce){.rv,.rv-l,.rv-r,.rv-scale,.stagger>*{opacity:1!important;transform:none!important}.pulse,.fab{animation:none}.hero-bg img{animation:none!important}}
+
+  /* ============ POLISH PREMIUM ============ */
+  /* sombras em camadas reutilizáveis */
+  :root{
+    --shadow-soft:0 2px 4px rgba(26,22,20,.04),0 8px 16px -6px rgba(26,22,20,.08);
+    --shadow-card:0 4px 10px -4px rgba(26,22,20,.1),0 24px 48px -24px rgba(26,22,20,.22);
+    --shadow-wine:0 18px 50px -20px rgba(139,35,50,.45);
+    --shadow-blue:0 18px 50px -20px rgba(19,41,75,.5);
+  }
+
+  /* transições suaves de cor entre seções (degradê sutil no topo das seções claras) */
+  section.block{position:relative}
+  #beneficios{background:linear-gradient(180deg,#fff 0%,var(--paper) 100%)}
+  #galeria{background:linear-gradient(180deg,var(--paper) 0%,var(--sand) 22%,var(--sand) 100%)}
+  #local{background:linear-gradient(180deg,var(--sand) 0%,var(--paper) 30%)}
+  /* fade de junção entre seção clara e as escuras (plantas->galeria etc.) */
+  .plantas{position:relative}
+  .plantas::before,.inst::before{content:"";position:absolute;top:-1px;left:0;right:0;height:60px;background:linear-gradient(180deg,rgba(237,232,226,0),rgba(237,232,226,.5));pointer-events:none}
+  .inst::before{background:linear-gradient(180deg,rgba(139,35,50,0),rgba(110,27,39,.25))}
+
+  /* CARDS de benefício — profundidade premium */
+  .bcard{box-shadow:var(--shadow-soft)}
+  .bcard:hover{box-shadow:var(--shadow-card);border-color:transparent;transform:translateY(-7px)}
+  .bcard .ico{box-shadow:inset 0 0 0 1px rgba(139,35,50,.12),0 6px 14px -6px rgba(139,35,50,.3)}
+
+  /* GALERIA — moldura, sombra e brilho no hover */
+  .gallery{gap:18px}
+  .gitem{box-shadow:var(--shadow-soft);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+  .gitem:hover{box-shadow:var(--shadow-card);transform:translateY(-4px)}
+
+  /* LEAD FORM — vidro mais refinado + brilho de borda */
+  .lead{box-shadow:0 50px 100px -30px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.35) inset;backdrop-filter:blur(2px)}
+
+  /* HEADER — glassmorphism mais sofisticado quando sólido */
+  header.solid{background:rgba(250,248,245,.78);backdrop-filter:blur(18px) saturate(140%);box-shadow:0 1px 0 rgba(26,22,20,.06),0 6px 24px -16px rgba(26,22,20,.3)}
+
+  /* MAPA e PERSPECTIVA — moldura premium */
+  .loc-map{box-shadow:var(--shadow-card)}
+  .pframe{box-shadow:var(--shadow-card)}
+  .inst-grid img{box-shadow:var(--shadow-card)}
+
+  /* BOTÕES — sombras coloridas mais ricas */
+  .btn-wine{box-shadow:var(--shadow-wine)}
+  .btn-blue{box-shadow:var(--shadow-blue)}
+
+  /* FAB e barra mobile — elevação refinada */
+  .fab{box-shadow:0 12px 32px -8px rgba(37,211,102,.6)}
+  .mbar{box-shadow:0 -8px 30px -12px rgba(26,22,20,.25)}
+
+  /* INDICADOR DE SCROLL no hero (assinatura premium) */
+  .scrolldown{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;animation:floaty 2.4s ease-in-out infinite}
+  .scrolldown .mouse{width:24px;height:38px;border:1.5px solid rgba(255,255,255,.6);border-radius:14px;position:relative}
+  .scrolldown .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;background:#fff;border-radius:2px;transform:translateX(-50%);animation:wheel 2.4s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+  @keyframes wheel{0%{opacity:0;top:7px}40%{opacity:1}100%{opacity:0;top:18px}}
+  @media(max-width:880px){.scrolldown{display:none}}
+  @media(prefers-reduced-motion:reduce){.scrolldown,.scrolldown .mouse::after{animation:none}}
 </style>
 </head>
 <body>
@@ -304,6 +361,7 @@
       </div>
     </div>
   </div>
+  <div class="scrolldown" aria-hidden="true"><span class="mouse"></span>Role</div>
 </section>
 
 <!-- BENEFITS -->

@@ -165,9 +165,12 @@
   .poi{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
   .poi .nm{font-size:16px;font-weight:600}
   .poi .ds{font-family:var(--serif);font-style:normal;font-weight:600;color:var(--wine);font-size:18px}
-  .addr{background:var(--blue);color:#fff;border-radius:var(--r);padding:24px;margin-top:20px}
+  .addr{display:block;background:var(--blue);color:#fff;border-radius:var(--r);padding:24px;margin-top:20px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease)}
+  .addr:hover{transform:translateY(-3px);background:var(--blue-deep);box-shadow:var(--shadow-blue)}
   .addr .lbl{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-soft);margin-bottom:8px}
   .addr .st{font-weight:700;font-size:18px;line-height:1.35}
+  .addr-cta{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:13px;font-weight:600;color:var(--blue-soft);transition:gap .2s var(--ease)}
+  .addr:hover .addr-cta{gap:11px;color:#fff}
   @media(max-width:860px){.loc-grid{grid-template-columns:1fr}}
 
   /* construtora */
@@ -462,10 +465,14 @@
           <div class="poi"><span class="nm">Pajuçara</span><span class="ds">10 min</span></div>
           <div class="poi"><span class="nm">Aeroporto Zumbi dos Palmares</span><span class="ds">22 min</span></div>
         </div>
-        <div class="addr">
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&query=Rua+Aureliano+Teixeira+de+Vasconcelos%2C+57%2C+Jati%C3%BAca%2C+Macei%C3%B3%2C+AL" target="_blank" rel="noopener">
           <div class="lbl">Stand de vendas</div>
           <div class="st">Rua Aureliano Teixeira de Vasconcelos, 57<br>Jatiúca · Maceió · AL</div>
-        </div>
+          <div class="addr-cta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.6-7-11a7 7 0 0114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Abrir no Google Maps →
+          </div>
+        </a>
       </div>
     </div>
   </div>

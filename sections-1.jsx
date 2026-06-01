@@ -510,8 +510,8 @@ function Intro() {
 function Institucional() {
   const numeros = [
     { n: '40', sufixo: 'anos', label: 'construindo em Maceió' },
-    { n: '+50', sufixo: '', label: 'empreendimentos entregues' },
-    { n: '100%', sufixo: '', label: 'no prazo, prontos para morar' },
+    { n: '5', sufixo: 'min', label: 'da Praia de Jatiúca' },
+    { n: 'Pronto', sufixo: '', label: 'para morar, chaves na hora' },
   ];
   return (
     <section id="construtora" data-screen-label="Construtora" className="section section--dark" style={{ overflow: 'hidden' }}>

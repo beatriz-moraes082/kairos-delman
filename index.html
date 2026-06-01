@@ -149,6 +149,9 @@
   .ppanel .pinfo li{display:flex;gap:11px;align-items:center;font-size:15px;color:var(--ink-2)}
   .ppanel .pinfo li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wine);flex:0 0 auto}
   .pframe{background:linear-gradient(160deg,#fff,var(--sand));border-radius:var(--r);padding:clamp(20px,3vw,36px);position:relative;box-shadow:0 14px 36px -18px rgba(0,0,0,.25)}
+  .persp-img{width:100%;height:auto;display:block;border-radius:8px;transition:transform .5s var(--ease)}
+  .pframe:hover .persp-img{transform:scale(1.02)}
+  .persp-zoom{position:absolute;right:24px;bottom:24px;background:rgba(26,22,20,.78);color:#fff;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:7px 12px;border-radius:999px;pointer-events:none;backdrop-filter:blur(4px)}
   .pcorner{position:absolute;width:14px;height:14px;border:1.5px solid var(--wine);opacity:.55}
   .pcorner.tl{top:14px;left:14px;border-width:1.5px 0 0 1.5px}.pcorner.tr{top:14px;right:14px;border-width:1.5px 1.5px 0 0}
   .pcorner.bl{bottom:14px;left:14px;border-width:0 0 1.5px 1.5px}.pcorner.br{bottom:14px;right:14px;border-width:0 1.5px 1.5px 0}
@@ -506,11 +509,11 @@
 
   // plantas data + render
   var PLANTAS=[
-    {n:'01',area:'87 m²',name:'3 quartos, 2 suítes',tag:'2 vagas · varanda',rooms:['Living + jantar','Cozinha integrada','Suíte master + closet','Suíte secundária','Quarto','Varanda 8 m²'],
+    {n:'01',area:'87 m²',name:'3 quartos, 2 suítes',tag:'2 vagas · varanda',persp:'imagens/planta-87.jpg',rooms:['Living + jantar','Cozinha integrada','Suíte master + closet','Suíte secundária','Quarto','Varanda 8 m²'],
      svg:'<rect x="20" y="20" width="160" height="100" fill="#F4F4F2" stroke="#1A1817" stroke-width="1.4"/><rect x="20" y="20" width="80" height="60" fill="#ECECEA" stroke="#C4C2BC" stroke-width=".6"/><text x="60" y="54" text-anchor="middle" font-size="6" fill="#4A4744" font-family="serif" font-style="italic">Living</text><rect x="20" y="80" width="50" height="40" fill="#E0E2E4" stroke="#C4C2BC" stroke-width=".6"/><text x="45" y="103" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Cozinha</text><rect x="100" y="20" width="80" height="50" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="140" y="47" text-anchor="middle" font-size="6" fill="#4A4744" font-family="serif" font-style="italic">Suíte master</text><rect x="70" y="80" width="60" height="40" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="100" y="103" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte 2</text><rect x="130" y="70" width="50" height="50" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="155" y="98" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Quarto</text><rect x="20" y="120" width="160" height="14" fill="rgba(139,35,50,.12)" stroke="#8B2332" stroke-width=".7"/><text x="100" y="130" text-anchor="middle" font-size="5" fill="#8B2332" font-family="serif" font-style="italic">Varanda</text>'},
-    {n:'02',area:'97 m²',name:'3 suítes',tag:'2 vagas · varanda gourmet',rooms:['Living amplo','Cozinha + área de serviço','3 suítes','Varanda gourmet 12 m²','2 vagas de garagem'],
+    {n:'02',area:'97 m²',name:'3 suítes',tag:'2 vagas · varanda gourmet',persp:'imagens/planta-97.jpg',rooms:['Living amplo','Cozinha + área de serviço','3 suítes','Varanda gourmet 12 m²','2 vagas de garagem'],
      svg:'<rect x="20" y="20" width="160" height="100" fill="#F4F4F2" stroke="#1A1817" stroke-width="1.4"/><rect x="20" y="20" width="100" height="60" fill="#ECECEA" stroke="#C4C2BC" stroke-width=".6"/><text x="70" y="54" text-anchor="middle" font-size="6" fill="#4A4744" font-family="serif" font-style="italic">Living amplo</text><rect x="120" y="20" width="60" height="40" fill="#E0E2E4" stroke="#C4C2BC" stroke-width=".6"/><text x="150" y="43" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Cozinha</text><rect x="120" y="60" width="60" height="50" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="150" y="87" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte master</text><rect x="20" y="80" width="60" height="40" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="50" y="103" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte 2</text><rect x="80" y="80" width="40" height="40" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="100" y="103" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte 3</text><rect x="20" y="120" width="160" height="16" fill="rgba(139,35,50,.12)" stroke="#8B2332" stroke-width=".7"/><text x="100" y="131" text-anchor="middle" font-size="5" fill="#8B2332" font-family="serif" font-style="italic">Varanda gourmet</text>'},
-    {n:'03',area:'149 m²',name:'Cobertura · 3 suítes',tag:'3 vagas · varanda 28 m²',rooms:['Living duplo','Cozinha gourmet','3 suítes (master + closet duplo)','Varanda gourmet 28 m² com churrasqueira','3 vagas de garagem'],
+    {n:'03',area:'149 m²',name:'Cobertura · 3 suítes',tag:'3 vagas · varanda 28 m²',persp:'imagens/planta-149.jpg',rooms:['Living duplo','Cozinha gourmet','3 suítes (master + closet duplo)','Varanda gourmet 28 m² com churrasqueira','3 vagas de garagem'],
      svg:'<rect x="10" y="20" width="180" height="100" fill="#F4F4F2" stroke="#1A1817" stroke-width="1.4"/><rect x="10" y="20" width="120" height="60" fill="#ECECEA" stroke="#C4C2BC" stroke-width=".6"/><text x="70" y="54" text-anchor="middle" font-size="6" fill="#4A4744" font-family="serif" font-style="italic">Living duplo</text><rect x="130" y="20" width="60" height="40" fill="#E0E2E4" stroke="#C4C2BC" stroke-width=".6"/><text x="160" y="43" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Cozinha</text><rect x="130" y="60" width="60" height="60" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="160" y="93" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte master</text><rect x="10" y="80" width="55" height="40" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="38" y="103" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte 2</text><rect x="65" y="80" width="65" height="40" fill="#F4F4F2" stroke="#C4C2BC" stroke-width=".6"/><text x="97" y="103" text-anchor="middle" font-size="5" fill="#4A4744" font-family="serif" font-style="italic">Suíte 3</text><rect x="10" y="120" width="180" height="24" fill="rgba(139,35,50,.12)" stroke="#8B2332" stroke-width=".9"/><text x="100" y="135" text-anchor="middle" font-size="6" fill="#8B2332" font-family="serif" font-style="italic">Varanda gourmet 28m²</text>'}
   ];
   var pactive=0;
@@ -520,13 +523,16 @@
     var p=PLANTAS[pactive];
     panel.innerHTML=
       '<div class="pframe"><span class="pcorner tl"></span><span class="pcorner tr"></span><span class="pcorner bl"></span><span class="pcorner br"></span>'
-      +'<svg viewBox="0 0 200 150" style="width:100%;height:auto;display:block"><g transform="translate(184,12)"><circle r="6" fill="none" stroke="#8B2332" stroke-width=".5"/><path d="M0 -6 L 0 6 M -6 0 L 6 0" stroke="#8B2332" stroke-width=".4" opacity=".6"/><text x="0" y="-7.5" text-anchor="middle" font-size="3.5" fill="#8B2332" font-weight="700">N</text></g>'+p.svg+'</svg></div>'
+      +'<img class="persp-img" src="'+p.persp+'" alt="Perspectiva da planta '+p.area+' do Edifício Kairós" loading="lazy" data-lb="'+p.persp+'" data-cap="Planta '+p.area+' · '+p.name+'"/>'
+      +'<span class="persp-zoom">⤢ Ampliar</span></div>'
       +'<div class="pinfo"><span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8B2332">Tipo '+p.n+' · '+p.tag+'</span>'
       +'<h3 style="margin-top:10px">'+p.area+'</h3><div class="ptype">'+p.name+'</div>'
       +'<ul>'+p.rooms.map(function(r){return '<li>'+r+'</li>';}).join('')+'</ul>'
-      +'<a class="btn btn-wine" style="margin-top:26px" href="https://wa.me/5582996823219?text='+encodeURIComponent('Quero o valor da planta de '+p.area+' ('+p.name+') no Edifício Kairós.')+'" target="_blank" rel="noopener">Ver valor desta planta →</a></div>';
+      +'<a class="btn btn-wine" style="margin-top:26px" href="https://wa.me/5582996823219?text='+encodeURIComponent('Quero agendar uma visita para conhecer a planta de '+p.area+' ('+p.name+') no Edifício Kairós.')+'" target="_blank" rel="noopener">Agendar visita →</a></div>';
+    // habilita lightbox na perspectiva recém-renderizada
+    var pi=panel.querySelector('.persp-img');
+    if(pi&&window.__openLB){ pi.style.cursor='zoom-in'; pi.addEventListener('click',function(){window.__openLB(p.persp,'Planta '+p.area+' · '+p.name);}); }
   }
-  renderPlantas();
 
   // reveal on scroll (todas as variações + stagger)
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -50px 0px'});
@@ -553,24 +559,28 @@
   var ioCount=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animateCount(e.target);ioCount.unobserve(e.target);}});},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(function(el){ioCount.observe(el);});
 
-  // lightbox da galeria
+  // lightbox (galeria com navegação + perspectivas de planta avulsas)
   (function(){
     var items=[].slice.call(document.querySelectorAll('.gitem[data-lb]'));
-    if(!items.length) return;
     var lb=document.createElement('div');lb.className='lb';
     lb.innerHTML='<button class="lb-x" aria-label="Fechar">✕</button><button class="lb-prev" aria-label="Anterior">←</button><button class="lb-next" aria-label="Próxima">→</button><img alt=""><div class="lb-cap"></div>';
     document.body.appendChild(lb);
-    var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),cur=0;
+    var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),prev=lb.querySelector('.lb-prev'),next=lb.querySelector('.lb-next'),cur=0,nav=true;
     function show(i){cur=(i+items.length)%items.length;img.src=items[cur].getAttribute('data-lb');cap.textContent=items[cur].getAttribute('data-cap')||'';}
-    function open(i){show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function openGallery(i){nav=true;prev.style.display=next.style.display='';show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function openSingle(src,caption){nav=false;prev.style.display=next.style.display='none';img.src=src;cap.textContent=caption||'';lb.classList.add('open');document.body.style.overflow='hidden';}
     function close(){lb.classList.remove('open');document.body.style.overflow='';}
-    items.forEach(function(it,i){it.addEventListener('click',function(){open(i);});});
+    items.forEach(function(it,i){it.addEventListener('click',function(){openGallery(i);});});
     lb.querySelector('.lb-x').addEventListener('click',close);
-    lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1);});
-    lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(cur+1);});
+    prev.addEventListener('click',function(e){e.stopPropagation();if(nav)show(cur-1);});
+    next.addEventListener('click',function(e){e.stopPropagation();if(nav)show(cur+1);});
     lb.addEventListener('click',function(e){if(e.target===lb)close();});
-    document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+    document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(nav&&e.key==='ArrowRight')show(cur+1);if(nav&&e.key==='ArrowLeft')show(cur-1);});
+    window.__openLB=openSingle;
   })();
+
+  // render inicial das plantas (após o lightbox existir, p/ a perspectiva ser clicável)
+  renderPlantas();
 </script>
 </body>
 </html>

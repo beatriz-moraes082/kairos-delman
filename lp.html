@@ -29,6 +29,10 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.62;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+  /* grão de textura cinematográfico global */
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* barra de progresso de leitura */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--wine),var(--blue));z-index:60;transition:width .1s linear}
   img{display:block;max-width:100%;height:auto}
   a{color:inherit;text-decoration:none}
   h1,h2,h3{line-height:1.06;letter-spacing:-0.03em;font-weight:700}
@@ -65,8 +69,9 @@
 
   /* hero */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-  .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;transform-origin:center;animation:kenburns 22s ease-out forwards}
+  @keyframes kenburns{0%{transform:scale(1.0)}100%{transform:scale(1.12)}}
   .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,.5) 0%,rgba(15,12,10,.08) 32%,rgba(15,12,10,.6) 72%,rgba(15,12,10,.92) 100%)}
   .hero-inner{position:relative;z-index:1;width:100%;padding-top:130px;padding-bottom:56px}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end}
@@ -128,12 +133,16 @@
 
   /* gallery */
   .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-  .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:46px}
-  .gitem{position:relative;overflow:hidden;border-radius:var(--r);cursor:pointer}
-  .gitem img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-  .gitem:hover img{transform:scale(1.05)}
-  .gitem .cap{position:absolute;left:14px;bottom:12px;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.6);z-index:2}
-  .gitem::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));z-index:1}
+  .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:54px}
+  .gitem{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;display:block;border:none;padding:0;background:none;font-family:inherit;width:100%}
+  .gitem img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .gitem:hover img{transform:scale(1.08)}
+  .gitem .cap{position:absolute;left:18px;bottom:16px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.04em;z-index:2;transform:translateY(6px);opacity:.92;transition:transform .5s var(--ease),opacity .5s var(--ease)}
+  .gitem:hover .cap{transform:translateY(0);opacity:1}
+  .gitem .plus{position:absolute;top:16px;right:16px;z-index:2;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;opacity:0;transform:scale(.7);transition:all .45s var(--ease)}
+  .gitem:hover .plus{opacity:1;transform:scale(1)}
+  .gitem::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(15,12,10,.6));z-index:1;transition:background .5s var(--ease)}
+  .gitem:hover::after{background:linear-gradient(180deg,rgba(139,35,50,.1) 0%,transparent 45%,rgba(15,12,10,.72))}
   .g-tall{grid-column:span 4;aspect-ratio:3/4}
   .g-wide{grid-column:span 8;aspect-ratio:16/10}
   .g-sq{grid-column:span 4;aspect-ratio:1}
@@ -211,13 +220,39 @@
   .mbar .btn{flex:1;justify-content:center;padding:14px}
   @media(max-width:760px){.mbar{display:flex}}
 
-  /* reveal */
-  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(15,12,10,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,56px);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+  .lb.open{opacity:1;pointer-events:auto}
+  .lb img{max-width:100%;max-height:86vh;border-radius:12px;box-shadow:0 40px 90px -20px rgba(0,0,0,.7);transform:scale(.96);transition:transform .4s var(--ease)}
+  .lb.open img{transform:scale(1)}
+  .lb-x,.lb-prev,.lb-next{position:absolute;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;transition:background .2s}
+  .lb-x:hover,.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.22)}
+  .lb-x{top:24px;right:24px}.lb-prev{left:24px;top:50%;transform:translateY(-50%)}.lb-next{right:24px;top:50%;transform:translateY(-50%)}
+  .lb-cap{position:absolute;bottom:28px;left:0;right:0;text-align:center;color:rgba(255,255,255,.85);font-size:14px;letter-spacing:.04em}
+  @media(max-width:560px){.lb-prev,.lb-next{width:44px;height:44px}.lb-prev{left:10px}.lb-next{right:10px}}
+
+  /* reveal cinemático */
+  .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .rv.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.pulse,.fab{animation:none}}
+  .rv-l{opacity:0;transform:translateX(-40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv-r{opacity:0;transform:translateX(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv-l.in,.rv-r.in{opacity:1;transform:none}
+  .rv-scale{opacity:0;transform:scale(1.06);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+  .rv-scale.in{opacity:1;transform:none}
+  /* stagger: filhos sobem em sequência quando o pai entra */
+  .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(1){transition-delay:.05s}
+  .stagger.in>*:nth-child(2){transition-delay:.13s}
+  .stagger.in>*:nth-child(3){transition-delay:.21s}
+  .stagger.in>*:nth-child(4){transition-delay:.29s}
+  .stagger.in>*:nth-child(5){transition-delay:.37s}
+  .stagger.in>*:nth-child(6){transition-delay:.45s}
+  @media(prefers-reduced-motion:reduce){.rv,.rv-l,.rv-r,.rv-scale,.stagger>*{opacity:1!important;transform:none!important}.pulse,.fab{animation:none}.hero-bg img{animation:none!important}}
 </style>
 </head>
 <body>
+<div class="progress"></div>
 
 <!-- HEADER -->
 <header id="hdr">
@@ -256,8 +291,8 @@
           <a class="btn btn-ghost btn-lg" href="#plantas">Ver plantas e valores</a>
         </div>
         <div class="hero-trust">
-          <div class="ht"><b>40 anos</b><span>Construtora Delman</span></div>
-          <div class="ht"><b>5 min</b><span>da praia de Jatiúca</span></div>
+          <div class="ht"><b data-count="40" data-suf=" anos">40 anos</b><span>Construtora Delman</span></div>
+          <div class="ht"><b data-count="5" data-suf=" min">5 min</b><span>da praia de Jatiúca</span></div>
           <div class="ht"><b>Até 3</b><span>suítes · 87–149 m²</span></div>
         </div>
       </div>
@@ -289,9 +324,9 @@
 <div class="stripe">
   <div class="wrap">
     <div class="cell"><b>Pronto</b><span>Entrega imediata, chaves na hora</span></div>
-    <div class="cell"><b>100 meses</b><span>Financiamento direto com a construtora</span></div>
-    <div class="cell"><b>+30 espaços</b><span>de lazer completo no condomínio</span></div>
-    <div class="cell"><b>40 anos</b><span>Construtora Delman em Maceió</span></div>
+    <div class="cell"><b data-count="100" data-suf=" meses">100 meses</b><span>Financiamento direto com a construtora</span></div>
+    <div class="cell"><b data-count="30" data-pre="+" data-suf=" espaços">+30 espaços</b><span>de lazer completo no condomínio</span></div>
+    <div class="cell"><b data-count="40" data-suf=" anos">40 anos</b><span>Construtora Delman em Maceió</span></div>
   </div>
 </div>
 
@@ -302,33 +337,33 @@
       <div class="eyebrow">Por que o Kairós</div>
       <h2 class="h2">Tudo o que um lar precisa,<br><span class="serif accent">pronto para você.</span></h2>
     </div>
-    <div class="benefits">
-      <div class="bcard rv">
+    <div class="benefits stagger">
+      <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5"/></svg></div>
         <h3>Pronto para morar</h3>
         <p>Sem espera de obra. Visite, escolha sua unidade e receba as chaves após a assinatura.</p>
       </div>
-      <div class="bcard rv">
+      <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div>
         <h3>Financiamento facilitado</h3>
         <p>Parcele em qualquer banco ou em até 100 meses, direto com a Construtora Delman.</p>
       </div>
-      <div class="bcard rv">
+      <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.6-7-11a7 7 0 0114 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <h3>A 5 min da praia</h3>
         <p>Jatiúca: os melhores restaurantes, escolas e o mar a uma curta caminhada de casa.</p>
       </div>
-      <div class="bcard rv">
+      <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M5 20V8l7-5 7 5v12M9 20v-5h6v5"/></svg></div>
         <h3>Até 3 suítes</h3>
         <p>Cinco tipologias de 87 a 149 m², todas com varanda e plantas amplas e bem resolvidas.</p>
       </div>
-      <div class="bcard rv">
+      <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5"/><circle cx="12" cy="14" r="4"/></svg></div>
         <h3>Lazer completo</h3>
         <p>Piscina, academia, espaço gourmet, lounge, quadra e muito mais — sem sair de casa.</p>
       </div>
-      <div class="bcard rv">
+      <div class="bcard">
         <div class="ico"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <h3>Últimas unidades</h3>
         <p>As últimas oportunidades estão disponíveis direto com a construtora. Garanta a sua.</p>
@@ -347,12 +382,12 @@
       </div>
       <a class="btn btn-wine" href="https://wa.me/5582996823219?text=Quero%20agendar%20uma%20visita%20ao%20Edif%C3%ADcio%20Kair%C3%B3s." target="_blank" rel="noopener">Agendar visita</a>
     </div>
-    <div class="gallery">
-      <a class="gitem g-wide rv" href="imagens/piscina.jpg" target="_blank"><img src="imagens/piscina.jpg" loading="lazy" alt="Piscina"><span class="cap">Piscina</span></a>
-      <a class="gitem g-tall rv" href="imagens/academia.jpg" target="_blank"><img src="imagens/academia.jpg" loading="lazy" alt="Academia"><span class="cap">Academia</span></a>
-      <a class="gitem g-sq rv" href="imagens/gourmet.jpg" target="_blank"><img src="imagens/gourmet.jpg" loading="lazy" alt="Espaço gourmet"><span class="cap">Espaço gourmet</span></a>
-      <a class="gitem g-sq rv" href="imagens/lounge.jpg" target="_blank"><img src="imagens/lounge.jpg" loading="lazy" alt="Lounge"><span class="cap">Lounge</span></a>
-      <a class="gitem g-sq rv" href="imagens/quadra.jpg" target="_blank"><img src="imagens/quadra.jpg" loading="lazy" alt="Quadra poliesportiva"><span class="cap">Quadra</span></a>
+    <div class="gallery stagger">
+      <button class="gitem g-wide" data-lb="imagens/piscina.jpg" data-cap="Piscina"><img src="imagens/piscina.jpg" loading="lazy" alt="Piscina"><span class="plus">+</span><span class="cap">Piscina</span></button>
+      <button class="gitem g-tall" data-lb="imagens/academia.jpg" data-cap="Academia"><img src="imagens/academia.jpg" loading="lazy" alt="Academia"><span class="plus">+</span><span class="cap">Academia</span></button>
+      <button class="gitem g-sq" data-lb="imagens/gourmet.jpg" data-cap="Espaço gourmet"><img src="imagens/gourmet.jpg" loading="lazy" alt="Espaço gourmet"><span class="plus">+</span><span class="cap">Espaço gourmet</span></button>
+      <button class="gitem g-sq" data-lb="imagens/lounge.jpg" data-cap="Lounge"><img src="imagens/lounge.jpg" loading="lazy" alt="Lounge"><span class="plus">+</span><span class="cap">Lounge</span></button>
+      <button class="gitem g-sq" data-lb="imagens/quadra.jpg" data-cap="Quadra poliesportiva"><img src="imagens/quadra.jpg" loading="lazy" alt="Quadra poliesportiva"><span class="plus">+</span><span class="cap">Quadra</span></button>
     </div>
   </div>
 </section>
@@ -520,9 +555,49 @@
   }
   renderPlantas();
 
-  // reveal on scroll
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  // reveal on scroll (todas as variações + stagger)
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-scale,.stagger').forEach(function(el){io.observe(el);});
+
+  // barra de progresso de leitura
+  var prog=document.querySelector('.progress');
+  function onProg(){var h=document.documentElement;var sc=h.scrollTop/(h.scrollHeight-h.clientHeight);prog.style.width=(sc*100)+'%';}
+  window.addEventListener('scroll',onProg,{passive:true});onProg();
+
+  // parallax suave do hero
+  var heroImg=document.querySelector('.hero-bg img');
+  window.addEventListener('scroll',function(){var y=window.scrollY;if(y<window.innerHeight&&heroImg){heroImg.style.transform='translateY('+(y*0.18)+'px) scale(1.08)';}},{passive:true});
+
+  // contador animado nos números (hero trust + stripe)
+  function animateCount(el){
+    var raw=el.getAttribute('data-count'); if(!raw) return;
+    var target=parseInt(raw,10), suf=el.getAttribute('data-suf')||'', pre=el.getAttribute('data-pre')||'';
+    var t0=null, dur=1300;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var ease=1-Math.pow(1-p,3);
+      el.textContent=pre+Math.round(target*ease)+suf; if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var ioCount=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animateCount(e.target);ioCount.unobserve(e.target);}});},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){ioCount.observe(el);});
+
+  // lightbox da galeria
+  (function(){
+    var items=[].slice.call(document.querySelectorAll('.gitem[data-lb]'));
+    if(!items.length) return;
+    var lb=document.createElement('div');lb.className='lb';
+    lb.innerHTML='<button class="lb-x" aria-label="Fechar">✕</button><button class="lb-prev" aria-label="Anterior">←</button><button class="lb-next" aria-label="Próxima">→</button><img alt=""><div class="lb-cap"></div>';
+    document.body.appendChild(lb);
+    var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),cur=0;
+    function show(i){cur=(i+items.length)%items.length;img.src=items[cur].getAttribute('data-lb');cap.textContent=items[cur].getAttribute('data-cap')||'';}
+    function open(i){show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    items.forEach(function(it,i){it.addEventListener('click',function(){open(i);});});
+    lb.querySelector('.lb-x').addEventListener('click',close);
+    lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1);});
+    lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(cur+1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+  })();
 </script>
 </body>
 </html>

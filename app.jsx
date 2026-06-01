@@ -51,11 +51,11 @@ function App() {
         <Hero variant={tweaks.hero} />
         <Intro />
         <Stats />
+        <Institucional />
         <FloorSelector />
         <Plantas layout={tweaks.plantas} />
         <Galeria />
         <Localizacao />
-        <Institucional />
         <Sustentabilidade />
         <CTA />
       </main>

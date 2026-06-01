@@ -7,11 +7,12 @@ const { useState: useState1, useEffect: useEffect1 } = React;
 /* Nav, sticky, scroll-spy                                            */
 /* ------------------------------------------------------------------ */
 const NAV_ITEMS = [
-  { id: 'edificio', label: 'Edifício' },
-  { id: 'plantas',  label: 'Plantas' },
-  { id: 'galeria',  label: 'Galeria' },
-  { id: 'local',    label: 'Localização' },
-  { id: 'contato',  label: 'Contato' },
+  { id: 'construtora', label: 'Construtora' },
+  { id: 'edificio',    label: 'Edifício' },
+  { id: 'plantas',     label: 'Plantas' },
+  { id: 'galeria',     label: 'Galeria' },
+  { id: 'local',       label: 'Localização' },
+  { id: 'contato',     label: 'Contato' },
 ];
 
 function Nav({ activeSection }) {

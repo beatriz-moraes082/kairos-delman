@@ -98,14 +98,6 @@
     .lead{padding:22px}
   }
 
-  /* trust bar */
-  .stripe{background:var(--blue);color:#fff}
-  .stripe .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-  .stripe .cell{padding:34px 26px;border-right:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;gap:6px}
-  .stripe .cell:last-child{border-right:none}
-  .stripe .cell b{font-family:var(--serif);font-style:normal;font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1;letter-spacing:-0.02em}
-  .stripe .cell span{font-size:13px;color:rgba(255,255,255,.7);line-height:1.4}
-  @media(max-width:760px){.stripe .wrap{grid-template-columns:repeat(2,1fr)}.stripe .cell:nth-child(2){border-right:none}.stripe .cell:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.12)}}
 
   /* sections */
   section.block{padding:clamp(72px,10vw,128px) 0}
@@ -310,16 +302,6 @@
     </div>
   </div>
 </section>
-
-<!-- TRUST STRIPE -->
-<div class="stripe">
-  <div class="wrap">
-    <div class="cell"><b>Pronto</b><span>Entrega imediata, chaves na hora</span></div>
-    <div class="cell"><b data-count="100" data-suf=" meses">100 meses</b><span>Financiamento direto com a construtora</span></div>
-    <div class="cell"><b data-count="30" data-pre="+" data-suf=" espaços">+30 espaços</b><span>de lazer completo no condomínio</span></div>
-    <div class="cell"><b data-count="40" data-suf=" anos">40 anos</b><span>Construtora Delman em Maceió</span></div>
-  </div>
-</div>
 
 <!-- BENEFITS -->
 <section class="block" id="beneficios">
@@ -559,7 +541,7 @@
   var heroImg=document.querySelector('.hero-bg img');
   window.addEventListener('scroll',function(){var y=window.scrollY;if(y<window.innerHeight&&heroImg){heroImg.style.transform='translateY('+(y*0.18)+'px) scale(1.08)';}},{passive:true});
 
-  // contador animado nos números (hero trust + stripe)
+  // contador animado nos números (data-count, onde houver)
   function animateCount(el){
     var raw=el.getAttribute('data-count'); if(!raw) return;
     var target=parseInt(raw,10), suf=el.getAttribute('data-suf')||'', pre=el.getAttribute('data-pre')||'';

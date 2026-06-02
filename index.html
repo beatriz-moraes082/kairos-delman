@@ -77,9 +77,9 @@
   @keyframes kenburns{0%{transform:scale(1.0)}100%{transform:scale(1.12)}}
   /* overlay mais forte e escuro embaixo — elegância + legibilidade (esconde área urbana densa) */
   .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,.32) 0%,rgba(15,12,10,.2) 38%,rgba(15,12,10,.7) 78%,rgba(15,12,10,.96) 100%)}
-  .hero-inner{position:relative;z-index:1;width:100%;padding-top:130px;padding-bottom:120px;display:flex;align-items:flex-end}
+  .hero-inner{position:relative;z-index:1;width:100%;padding-top:130px;padding-bottom:64px;display:flex;align-items:flex-end}
   .hero-content{max-width:760px}
-  .badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px);padding:9px 17px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+  .badge{display:inline-flex;align-items:center;gap:11px;padding:0 0 14px;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.3);text-shadow:0 1px 12px rgba(0,0,0,.5)}
   .pulse{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pulse 2s infinite}
   @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
   .hero h1{font-size:clamp(40px,6vw,74px);font-weight:700;line-height:1.0;letter-spacing:-0.035em;text-shadow:0 2px 40px rgba(0,0,0,.4)}
@@ -104,7 +104,8 @@
   @media(max-width:880px){
     .hero-inner{padding-top:104px;padding-bottom:64px}
     .lead-bar{flex-direction:column;align-items:stretch;gap:16px}
-    .lead-bar-form{grid-template-columns:1fr;gap:10px}
+    .lead-bar-form{grid-template-columns:1fr;grid-auto-rows:auto;align-content:start;align-items:start;gap:10px}
+    .lead-bar-form input,.lead-bar-form select,.lead-bar-form .btn{height:auto}
     .lead-bar-form select,.lead-bar-form .btn{grid-column:1/2}
   }
 
@@ -189,7 +190,7 @@
   .inst-grid img{border-radius:var(--r);width:100%}
   .inst .h2{color:#fff}
   .inst p{color:rgba(255,255,255,.8);margin-top:18px;font-size:16px;max-width:520px}
-  @media(max-width:860px){.inst-grid{grid-template-columns:1fr}}
+  @media(max-width:860px){.inst-grid{grid-template-columns:1fr}.inst-grid img{max-height:300px;object-fit:cover}}
 
   /* CTA final */
   .final{position:relative;color:#fff;overflow:hidden}
@@ -256,7 +257,7 @@
 
   /* ============ POLISH PREMIUM ============ */
   /* SPEC BAR estilo IZAR — card flutuante sobre a junção do hero */
-  .specbar-wrap{margin-top:-56px;position:relative;z-index:3}
+  .specbar-wrap{margin-top:36px;position:relative;z-index:3}
   .specbar{display:grid;grid-template-columns:1fr 1fr 1.2fr;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(26,22,20,.5)}
   .spec{padding:26px 30px;position:relative;display:flex;flex-direction:column;gap:5px;justify-content:center}
   .spec--wine{background:var(--wine);color:#fff}
@@ -271,7 +272,7 @@
   .spec-list li{font-size:13px;font-weight:500;position:relative;padding-left:15px}
   .spec-list li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--wine)}
   @media(max-width:860px){
-    .specbar-wrap{margin-top:-28px}
+    .specbar-wrap{margin-top:28px}
     .specbar{grid-template-columns:1fr}
     .spec--wine::after,.spec--blue::after{display:none}
     .spec{padding:22px 24px}
@@ -321,8 +322,6 @@
   #local{background:linear-gradient(180deg,var(--sand) 0%,var(--paper) 30%)}
   /* fade de junção entre seção clara e as escuras (plantas->galeria etc.) */
   .plantas{position:relative}
-  .plantas::before,.inst::before{content:"";position:absolute;top:-1px;left:0;right:0;height:60px;background:linear-gradient(180deg,rgba(237,232,226,0),rgba(237,232,226,.5));pointer-events:none}
-  .inst::before{background:linear-gradient(180deg,rgba(139,35,50,0),rgba(110,27,39,.25))}
 
   /* CARDS de benefício — profundidade premium */
   .bcard{box-shadow:var(--shadow-soft)}

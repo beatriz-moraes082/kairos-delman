@@ -248,6 +248,15 @@
   @media(prefers-reduced-motion:reduce){.rv,.rv-l,.rv-r,.rv-scale,.stagger>*{opacity:1!important;transform:none!important}.pulse,.fab{animation:none}.hero-bg img{animation:none!important}}
 
   /* ============ POLISH PREMIUM ============ */
+  /* entrada cinematográfica do hero — só anima quando <html> tem .js-anim (senão fica visível) */
+  .js-anim .hero-enter{opacity:0;transform:translateY(26px);animation:heroIn .9s var(--ease) forwards;animation-delay:var(--d,0s)}
+  @keyframes heroIn{to{opacity:1;transform:none}}
+  /* reveals mais dramáticos (sobe mais + leve blur que limpa) */
+  .rv{transform:translateY(44px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+  .rv.in{filter:blur(0)}
+  .stagger>*{transform:translateY(34px)}
+  @media(prefers-reduced-motion:reduce){.hero-enter{opacity:1!important;transform:none!important;animation:none!important}.rv{filter:none!important}}
+
   /* sombras em camadas reutilizáveis */
   :root{
     --shadow-soft:0 2px 4px rgba(26,22,20,.04),0 8px 16px -6px rgba(26,22,20,.08);
@@ -339,10 +348,10 @@
   <div class="hero-inner wrap">
     <div class="hero-grid">
       <div>
-        <span class="badge"><span class="pulse"></span> Pronto para morar · Jatiúca</span>
-        <h1>Seu apartamento <span class="serif accent" style="color:#fff">pronto</span> a 5 minutos da praia de Jatiúca.</h1>
-        <p class="sub">Até 3 suítes, 87 a 149 m² e lazer completo. Chaves na hora e financiamento em até 100 meses, direto com a Construtora Delman.</p>
-        <div class="hero-ctas">
+        <span class="badge hero-enter" style="--d:.1s"><span class="pulse"></span> Pronto para morar · Jatiúca</span>
+        <h1 class="hero-enter" style="--d:.22s">Seu apartamento <span class="serif accent" style="color:#fff">pronto</span> a 5 minutos da praia de Jatiúca.</h1>
+        <p class="sub hero-enter" style="--d:.38s">Até 3 suítes, 87 a 149 m² e lazer completo. Chaves na hora e financiamento em até 100 meses, direto com a Construtora Delman.</p>
+        <div class="hero-ctas hero-enter" style="--d:.5s">
           <a class="btn btn-wa btn-lg" href="https://wa.me/5582996823219?text=Ol%C3%A1!%20Quero%20a%20tabela%20de%20pre%C3%A7os%20do%20Edif%C3%ADcio%20Kair%C3%B3s." target="_blank" rel="noopener">
             <svg class="wa-ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2 7.8L.4 31.6l8.1-2.1c2.3 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.1 5.8-12.9 12.9-12.9S28.9 8.8 28.9 16 23.1 28.7 16 28.7zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.2-1-1.9-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1 0 1.8 1.3 3.6 1.5 3.8.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.4z"/></svg>
             Falar agora no WhatsApp
@@ -351,7 +360,7 @@
         </div>
       </div>
       <!-- LEAD FORM -->
-      <div class="lead rv" id="form-topo">
+      <div class="lead hero-enter" style="--d:.62s" id="form-topo">
         <h3>Receba a tabela de preços</h3>
         <p class="small">Plantas, valores e condições no seu WhatsApp, na hora.</p>
         <form onsubmit="return enviarLead(event,'hero')">
@@ -616,6 +625,14 @@
   window.addEventListener('scroll',onProg,{passive:true});onProg();
 
   // parallax suave do hero
+  // entrada do hero: ativa a animação só com JS (se JS falhar, conteúdo já é visível).
+  // failsafe: se o vídeo/animação travar (ex.: aba em 2º plano), revela na hora que ganhar foco.
+  (function(){
+    document.documentElement.classList.add('js-anim');
+    function force(){document.querySelectorAll('.hero-enter').forEach(function(el){el.style.opacity='1';el.style.transform='none';});}
+    setTimeout(function(){[].some.call(document.querySelectorAll('.hero-enter'),function(el){return getComputedStyle(el).opacity==='0';})&&force();},2500);
+    document.addEventListener('visibilitychange',function(){if(!document.hidden)setTimeout(force,300);});
+  })();
   // garante autoplay do vídeo do hero (alguns navegadores bloqueiam o autoplay declarativo)
   (function(){var v=document.querySelector('.hero-video');if(!v)return;v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});
     ['touchstart','click','scroll'].forEach(function(ev){document.addEventListener(ev,function once(){v.play().catch(function(){});document.removeEventListener(ev,once);},{once:true,passive:true});});})();

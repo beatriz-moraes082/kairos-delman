@@ -248,6 +248,48 @@
   @media(prefers-reduced-motion:reduce){.rv,.rv-l,.rv-r,.rv-scale,.stagger>*{opacity:1!important;transform:none!important}.pulse,.fab{animation:none}.hero-bg img{animation:none!important}}
 
   /* ============ POLISH PREMIUM ============ */
+  /* SPEC BAR estilo IZAR — card flutuante sobre a junção do hero */
+  .specbar-wrap{margin-top:-56px;position:relative;z-index:3}
+  .specbar{display:grid;grid-template-columns:1fr 1fr 1.2fr;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(26,22,20,.5)}
+  .spec{padding:26px 30px;position:relative;display:flex;flex-direction:column;gap:5px;justify-content:center}
+  .spec--wine{background:var(--wine);color:#fff}
+  .spec--blue{background:var(--blue);color:#fff}
+  .spec--light{background:var(--paper);color:var(--ink)}
+  .spec--wine::after,.spec--blue::after{content:"";position:absolute;top:0;right:-17px;bottom:0;width:18px;background:inherit;clip-path:polygon(0 0,100% 50%,0 100%);z-index:2}
+  .spec-lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.85}
+  .spec--light .spec-lbl{color:var(--wine);opacity:1}
+  .spec-val{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.4vw,27px);line-height:1.05;letter-spacing:-0.02em}
+  .spec-sub{font-size:12.5px;opacity:.78}
+  .spec-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:3px 18px;margin:0;padding:0}
+  .spec-list li{font-size:13px;font-weight:500;position:relative;padding-left:15px}
+  .spec-list li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--wine)}
+  @media(max-width:860px){
+    .specbar-wrap{margin-top:-28px}
+    .specbar{grid-template-columns:1fr}
+    .spec--wine::after,.spec--blue::after{display:none}
+    .spec{padding:22px 24px}
+  }
+  /* ABAS da galeria */
+  .gtabs{display:flex;gap:10px;margin-top:40px;flex-wrap:wrap}
+  .gtab{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink-2);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:10px 22px;cursor:pointer;transition:all .25s var(--ease)}
+  .gtab:hover{border-color:var(--wine);color:var(--wine)}
+  .gtab.active{background:var(--wine);border-color:var(--wine);color:#fff}
+  .gallery{margin-top:22px}
+  .gitem[hidden]{display:none}
+
+  /* DIFERENCIAIS EM FOTOS estilo IZAR */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px}
+  .feat{position:relative;display:block;min-height:380px;border-radius:16px;overflow:hidden;background-size:cover;background-position:center;color:#fff;box-shadow:var(--shadow-soft);transition:box-shadow .4s var(--ease),transform .4s var(--ease)}
+  .feat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,.05) 0%,rgba(15,12,10,.15) 45%,rgba(15,12,10,.82) 100%);transition:background .4s var(--ease)}
+  .feat:hover{transform:translateY(-5px);box-shadow:var(--shadow-card)}
+  .feat:hover::after{background:linear-gradient(180deg,rgba(139,35,50,.12) 0%,rgba(15,12,10,.35) 45%,rgba(15,12,10,.88) 100%)}
+  .feat-body{position:absolute;left:26px;right:26px;bottom:24px;z-index:2;display:flex;flex-direction:column;gap:8px}
+  .feat-ttl{font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:-0.02em;line-height:1.1}
+  .feat-txt{font-size:14px;color:rgba(255,255,255,.85);max-width:280px;line-height:1.45}
+  .feat-arrow{position:absolute;top:22px;right:22px;z-index:2;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .4s var(--ease)}
+  .feat:hover .feat-arrow{background:var(--wine);border-color:var(--wine);transform:rotate(0) scale(1.08)}
+  @media(max-width:860px){.feat-grid{grid-template-columns:1fr}.feat{min-height:300px}}
+
   /* entrada cinematográfica do hero — só anima quando <html> tem .js-anim (senão fica visível) */
   .js-anim .hero-enter{opacity:0;transform:translateY(26px);animation:heroIn .9s var(--ease) forwards;animation-delay:var(--d,0s)}
   @keyframes heroIn{to{opacity:1;transform:none}}
@@ -384,6 +426,31 @@
   <div class="scrolldown" aria-hidden="true"><span class="mouse"></span>Role</div>
 </section>
 
+<!-- SPEC BAR (estilo IZAR) -->
+<div class="specbar-wrap">
+  <div class="wrap">
+    <div class="specbar rv">
+      <div class="spec spec--wine">
+        <div class="spec-lbl">Localização</div>
+        <div class="spec-val">Jatiúca, Maceió</div>
+        <div class="spec-sub">a 5 min da praia</div>
+      </div>
+      <div class="spec spec--blue">
+        <div class="spec-lbl">Tipologia</div>
+        <div class="spec-val">Até 3 suítes</div>
+        <div class="spec-sub">87 a 149 m² · 2 a 3 vagas</div>
+      </div>
+      <div class="spec spec--light">
+        <div class="spec-lbl">Áreas comuns</div>
+        <ul class="spec-list">
+          <li>Piscina</li><li>Academia</li><li>Espaço gourmet</li>
+          <li>Lounge</li><li>Quadra</li><li>+30 espaços</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- BENEFITS -->
 <section class="block" id="beneficios">
   <div class="wrap">
@@ -423,6 +490,22 @@
         <p>As últimas oportunidades estão disponíveis direto com a construtora. Garanta a sua.</p>
       </div>
     </div>
+
+    <!-- DIFERENCIAIS EM FOTOS (estilo IZAR) -->
+    <div class="feat-grid stagger">
+      <a class="feat" href="#galeria" style="background-image:url('imagens/piscina.jpg')">
+        <span class="feat-body"><span class="feat-ttl">Lazer de resort</span><span class="feat-txt">Piscina, academia e mais de 30 espaços de convivência.</span></span>
+        <span class="feat-arrow">↗</span>
+      </a>
+      <a class="feat" href="#galeria" style="background-image:url('imagens/gourmet.jpg')">
+        <span class="feat-body"><span class="feat-ttl">Para receber bem</span><span class="feat-txt">Espaço gourmet e lounges pensados para a sua vida social.</span></span>
+        <span class="feat-arrow">↗</span>
+      </a>
+      <a class="feat" href="#plantas" style="background-image:url('imagens/lounge.jpg')">
+        <span class="feat-body"><span class="feat-ttl">Acabamento de verdade</span><span class="feat-txt">Apartamentos amplos, prontos para morar, com até 3 suítes.</span></span>
+        <span class="feat-arrow">↗</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -436,12 +519,19 @@
       </div>
       <a class="btn btn-wine" href="https://wa.me/5582996823219?text=Quero%20agendar%20uma%20visita%20ao%20Edif%C3%ADcio%20Kair%C3%B3s." target="_blank" rel="noopener">Agendar visita</a>
     </div>
-    <div class="gallery stagger">
-      <button class="gitem g-wide" data-lb="imagens/piscina.jpg" data-cap="Piscina"><img src="imagens/piscina.jpg" loading="lazy" alt="Piscina"><span class="plus">+</span><span class="cap">Piscina</span></button>
-      <button class="gitem g-tall" data-lb="imagens/academia.jpg" data-cap="Academia"><img src="imagens/academia.jpg" loading="lazy" alt="Academia"><span class="plus">+</span><span class="cap">Academia</span></button>
-      <button class="gitem g-sq" data-lb="imagens/gourmet.jpg" data-cap="Espaço gourmet"><img src="imagens/gourmet.jpg" loading="lazy" alt="Espaço gourmet"><span class="plus">+</span><span class="cap">Espaço gourmet</span></button>
-      <button class="gitem g-sq" data-lb="imagens/lounge.jpg" data-cap="Lounge"><img src="imagens/lounge.jpg" loading="lazy" alt="Lounge"><span class="plus">+</span><span class="cap">Lounge</span></button>
-      <button class="gitem g-sq" data-lb="imagens/quadra.jpg" data-cap="Quadra poliesportiva"><img src="imagens/quadra.jpg" loading="lazy" alt="Quadra poliesportiva"><span class="plus">+</span><span class="cap">Quadra</span></button>
+    <div class="gtabs rv">
+      <button class="gtab active" data-cat="lazer">Áreas comuns</button>
+      <button class="gtab" data-cat="vista">Vista &amp; fachada</button>
+    </div>
+    <div class="gallery stagger" id="gallery">
+      <button class="gitem g-wide" data-cat="lazer" data-lb="imagens/piscina.jpg" data-cap="Piscina"><img src="imagens/piscina.jpg" loading="lazy" alt="Piscina"><span class="plus">+</span><span class="cap">Piscina</span></button>
+      <button class="gitem g-tall" data-cat="lazer" data-lb="imagens/academia.jpg" data-cap="Academia"><img src="imagens/academia.jpg" loading="lazy" alt="Academia"><span class="plus">+</span><span class="cap">Academia</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/gourmet.jpg" data-cap="Espaço gourmet"><img src="imagens/gourmet.jpg" loading="lazy" alt="Espaço gourmet"><span class="plus">+</span><span class="cap">Espaço gourmet</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lounge.jpg" data-cap="Lounge"><img src="imagens/lounge.jpg" loading="lazy" alt="Lounge"><span class="plus">+</span><span class="cap">Lounge</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/quadra.jpg" data-cap="Quadra poliesportiva"><img src="imagens/quadra.jpg" loading="lazy" alt="Quadra poliesportiva"><span class="plus">+</span><span class="cap">Quadra</span></button>
+      <button class="gitem g-wide" data-cat="vista" hidden data-lb="imagens/hero-torre.jpg" data-cap="Fachada do Edifício Kairós"><img src="imagens/hero-torre.jpg" loading="lazy" alt="Fachada do Edifício Kairós"><span class="plus">+</span><span class="cap">Fachada</span></button>
+      <button class="gitem g-tall" data-cat="vista" hidden data-lb="imagens/hero-mar.jpg" data-cap="Vista do mar de Jatiúca"><img src="imagens/hero-mar.jpg" loading="lazy" alt="Vista do mar de Jatiúca"><span class="plus">+</span><span class="cap">Vista do mar</span></button>
+      <button class="gitem g-sq" data-cat="vista" hidden data-lb="imagens/localizacao-aerea.jpg" data-cap="Jatiúca · vista aérea"><img src="imagens/localizacao-aerea.jpg" loading="lazy" alt="Jatiúca vista aérea"><span class="plus">+</span><span class="cap">Vista aérea</span></button>
     </div>
   </div>
 </section>
@@ -651,18 +741,28 @@
   var ioCount=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animateCount(e.target);ioCount.unobserve(e.target);}});},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(function(el){ioCount.observe(el);});
 
+  // abas da galeria (filtra por categoria)
+  (function(){
+    var tabs=document.querySelectorAll('.gtab');if(!tabs.length)return;
+    tabs.forEach(function(t){t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('active');});t.classList.add('active');
+      var cat=t.getAttribute('data-cat');
+      document.querySelectorAll('.gitem').forEach(function(g){g.hidden=(g.getAttribute('data-cat')!==cat);});
+    });});
+  })();
+
   // lightbox (galeria com navegação + perspectivas de planta avulsas)
   (function(){
-    var items=[].slice.call(document.querySelectorAll('.gitem[data-lb]'));
+    var all=[].slice.call(document.querySelectorAll('.gitem[data-lb]'));
     var lb=document.createElement('div');lb.className='lb';
     lb.innerHTML='<button class="lb-x" aria-label="Fechar">✕</button><button class="lb-prev" aria-label="Anterior">←</button><button class="lb-next" aria-label="Próxima">→</button><img alt=""><div class="lb-cap"></div>';
     document.body.appendChild(lb);
-    var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),prev=lb.querySelector('.lb-prev'),next=lb.querySelector('.lb-next'),cur=0,nav=true;
+    var img=lb.querySelector('img'),cap=lb.querySelector('.lb-cap'),prev=lb.querySelector('.lb-prev'),next=lb.querySelector('.lb-next'),cur=0,nav=true,items=all;
     function show(i){cur=(i+items.length)%items.length;img.src=items[cur].getAttribute('data-lb');cap.textContent=items[cur].getAttribute('data-cap')||'';}
-    function openGallery(i){nav=true;prev.style.display=next.style.display='';show(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function openGallery(el){items=all.filter(function(x){return !x.hidden;});var i=items.indexOf(el);nav=true;prev.style.display=next.style.display='';show(i<0?0:i);lb.classList.add('open');document.body.style.overflow='hidden';}
     function openSingle(src,caption){nav=false;prev.style.display=next.style.display='none';img.src=src;cap.textContent=caption||'';lb.classList.add('open');document.body.style.overflow='hidden';}
     function close(){lb.classList.remove('open');document.body.style.overflow='';}
-    items.forEach(function(it,i){it.addEventListener('click',function(){openGallery(i);});});
+    all.forEach(function(it){it.addEventListener('click',function(){openGallery(it);});});
     lb.querySelector('.lb-x').addEventListener('click',close);
     prev.addEventListener('click',function(e){e.stopPropagation();if(nav)show(cur-1);});
     next.addEventListener('click',function(e){e.stopPropagation();if(nav)show(cur+1);});

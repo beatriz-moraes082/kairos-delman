@@ -195,7 +195,8 @@
   /* CTA final */
   .final{position:relative;color:#fff;overflow:hidden}
   .final-bg{position:absolute;inset:0;z-index:0}
-  .final-bg img{width:100%;height:100%;object-fit:cover}
+  .final-bg img,.final-bg .final-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .final-bg .final-video{z-index:1}.final-bg img{z-index:0}
   .final-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,41,75,.90),rgba(10,26,51,.95))}
   .final .wrap{position:relative;z-index:1;text-align:center;padding:clamp(52px,7vw,90px) 20px}
   .final h2{font-size:clamp(32px,5vw,56px);font-weight:800}
@@ -277,6 +278,16 @@
     .spec--wine::after,.spec--blue::after{display:none}
     .spec{padding:22px 24px}
   }
+  /* lista completa de áreas comuns */
+  .amen{margin-top:48px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(28px,4vw,44px);box-shadow:var(--shadow-soft)}
+  .amen-head{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.4vw,28px);letter-spacing:-0.02em;color:var(--ink);margin-bottom:24px}
+  .amen-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 28px}
+  .amen-grid li{position:relative;padding-left:28px;font-size:15px;color:var(--ink-2);line-height:1.4}
+  .amen-grid li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:50%;background:var(--wine-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B2332' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .amen-note{margin-top:22px;font-size:12px;color:var(--ink-3);font-style:italic}
+  @media(max-width:760px){.amen-grid{grid-template-columns:1fr 1fr;gap:12px 18px}}
+  @media(max-width:440px){.amen-grid{grid-template-columns:1fr}}
+
   /* ABAS da galeria */
   .gtabs{display:flex;gap:10px;margin-top:40px;flex-wrap:wrap}
   .gtab{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink-2);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:10px 22px;cursor:pointer;transition:all .25s var(--ease)}
@@ -550,6 +561,36 @@
       <button class="gitem g-tall" data-cat="vista" hidden data-lb="imagens/hero-mar.jpg" data-cap="Vista do mar de Jatiúca"><img src="imagens/hero-mar.jpg" loading="lazy" alt="Vista do mar de Jatiúca"><span class="plus">+</span><span class="cap">Vista do mar</span></button>
       <button class="gitem g-sq" data-cat="vista" hidden data-lb="imagens/localizacao-aerea.jpg" data-cap="Jatiúca · vista aérea"><img src="imagens/localizacao-aerea.jpg" loading="lazy" alt="Jatiúca vista aérea"><span class="plus">+</span><span class="cap">Vista aérea</span></button>
     </div>
+
+    <!-- LISTA COMPLETA DE ÁREAS COMUNS -->
+    <div class="amen rv">
+      <div class="amen-head">Mais de 30 itens de lazer e conveniência</div>
+      <ul class="amen-grid">
+        <li>Piscina adulto e infantil</li>
+        <li>Espaço fitness / academia</li>
+        <li>Espaço gourmet interno</li>
+        <li>Espaço gourmet externo</li>
+        <li>Lounge</li>
+        <li>Quadra poliesportiva</li>
+        <li>Brinquedoteca</li>
+        <li>Playground</li>
+        <li>Espaço kids</li>
+        <li>Espaço pet</li>
+        <li>Espaço pilates</li>
+        <li>Espaço mulher</li>
+        <li>Salão de beleza</li>
+        <li>Salão de festas</li>
+        <li>Coworking</li>
+        <li>Espaço delivery</li>
+        <li>Bicicletário</li>
+        <li>Lavanderia coletiva</li>
+        <li>Gerador para áreas comuns</li>
+        <li>Energia solar fotovoltaica</li>
+        <li>Carregador para carro elétrico</li>
+        <li>Portaria com segurança</li>
+      </ul>
+      <p class="amen-note">Imagens ilustrativas. Consulte o memorial descritivo para a relação completa de itens.</p>
+    </div>
   </div>
 </section>
 
@@ -600,7 +641,12 @@
 
 <!-- CTA FINAL -->
 <section class="final" id="contato">
-  <div class="final-bg"><img src="imagens/hero-torre.jpg" loading="lazy" alt="Edifício Kairós"></div>
+  <div class="final-bg">
+    <video class="final-video" autoplay muted loop playsinline preload="none" poster="imagens/cta-poster.jpg">
+      <source src="imagens/cta-video.mp4" type="video/mp4" />
+    </video>
+    <img src="imagens/cta-poster.jpg" loading="lazy" alt="Praia de Jatiúca, Maceió" />
+  </div>
   <div class="wrap">
     <h2>Jatiúca nunca teve tanto lazer<br><span class="serif">num só endereço.</span></h2>
     <p>E o Kairós está nas últimas unidades. Fale agora com um consultor.</p>
@@ -722,9 +768,11 @@
     setTimeout(function(){[].some.call(document.querySelectorAll('.hero-enter'),function(el){return getComputedStyle(el).opacity==='0';})&&force();},2500);
     document.addEventListener('visibilitychange',function(){if(!document.hidden)setTimeout(force,300);});
   })();
-  // garante autoplay do vídeo do hero (alguns navegadores bloqueiam o autoplay declarativo)
-  (function(){var v=document.querySelector('.hero-video');if(!v)return;v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});
-    ['touchstart','click','scroll'].forEach(function(ev){document.addEventListener(ev,function once(){v.play().catch(function(){});document.removeEventListener(ev,once);},{once:true,passive:true});});})();
+  // garante autoplay dos vídeos (hero + CTA); alguns navegadores bloqueiam o autoplay declarativo
+  (function(){var vids=[].slice.call(document.querySelectorAll('.hero-video,.final-video'));if(!vids.length)return;
+    function kick(){vids.forEach(function(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});}
+    kick();
+    ['touchstart','click','scroll'].forEach(function(ev){document.addEventListener(ev,function once(){kick();document.removeEventListener(ev,once);},{once:true,passive:true});});})();
   var heroImg=document.querySelector('.hero-bg .hero-video')||document.querySelector('.hero-bg img');
   window.addEventListener('scroll',function(){var y=window.scrollY;if(y<window.innerHeight&&heroImg){heroImg.style.transform='translateY('+(y*0.12)+'px) scale(1.06)';}},{passive:true});
 

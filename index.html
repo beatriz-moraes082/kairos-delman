@@ -6,7 +6,7 @@
 <title>Edifício Kairós · Apartamentos prontos em Jatiúca, Maceió · Delman</title>
 <meta name="description" content="Apartamento pronto para morar em Jatiúca, a 5 minutos da praia. Até 3 suítes, 87 a 97 m², lazer completo. Financiamento em até 100 meses direto com a Construtora Delman." />
 <meta property="og:title" content="Edifício Kairós · Jatiúca, Maceió" />
-<meta property="og:description" content="Pronto para morar, a 5 minutos da praia de Jatiúca. Até 3 suítes e lazer completo. Construtora Delman, 40 anos." />
+<meta property="og:description" content="Pronto para morar, a 5 minutos da praia de Jatiúca. Até 3 suítes e lazer completo. Construtora Delman, mais de 30 anos." />
 <meta property="og:image" content="imagens/hero-mar.jpg" />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,14 +59,16 @@
   header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .25s ease,box-shadow .25s ease,padding .25s ease;padding:16px 0}
   header.solid{background:rgba(250,248,245,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:10px 0}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .logo{height:38px;width:auto;transition:opacity .2s}
-  .logo-light{filter:brightness(0) invert(1)}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand .blogo{height:46px;width:auto;display:block;transition:filter .25s}
+  .brand .brand-sep{width:1px;height:30px;background:rgba(0,0,0,.18);transition:background .25s}
+  .brand.logo-light .brand-sep{background:rgba(255,255,255,.5)}
   .nav-links{display:flex;gap:26px;align-items:center}
   .nav-links a{font-size:14px;font-weight:600;color:#fff;opacity:.9;transition:opacity .2s}
   header.solid .nav-links a{color:var(--ink-2)}
   .nav-links a:hover{opacity:1;color:var(--wine)}
   .nav-cta{display:flex;align-items:center;gap:10px}
-  @media(max-width:880px){.nav-links{display:none}.logo{height:32px}}
+  @media(max-width:880px){.nav-links{display:none}.brand .blogo{height:40px}}
 
   /* hero */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
@@ -222,7 +224,8 @@
   /* footer */
   footer{background:#fff;color:var(--ink-2);padding:56px 0 110px;border-top:1px solid var(--line)}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
-  footer .logo{height:40px;margin-bottom:16px}
+  .brand-foot{margin-bottom:18px}
+  .brand-foot .blogo{height:46px}
   footer h4{color:var(--ink);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
   footer a{display:block;padding:5px 0;font-size:14.5px;transition:color .2s}
   footer a:hover{color:var(--wine)}
@@ -395,7 +398,11 @@
 <!-- HEADER -->
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#topo" aria-label="Edifício Kairós"><img class="logo logo-light" id="logo" src="imagens/brand-lockup.png" alt="Delman · Edifício Kairós" /></a>
+    <a href="#topo" class="brand logo-light" id="logo" aria-label="Delman · Edifício Kairós">
+      <img class="blogo" id="logo-d" src="imagens/logo-delman-branco.png" alt="Construtora Delman" />
+      <span class="brand-sep" aria-hidden="true"></span>
+      <img class="blogo" id="logo-k" src="imagens/logo-kairos-branco.png" alt="Edifício Kairós" />
+    </a>
     <nav class="nav-links">
       <a href="#beneficios">O empreendimento</a>
       <a href="#galeria">Galeria</a>
@@ -522,11 +529,11 @@
         <span class="feat-body"><span class="feat-ttl">Lazer de resort</span><span class="feat-txt">Piscina, academia e mais de 30 espaços de convivência.</span></span>
         <span class="feat-arrow">↗</span>
       </a>
-      <a class="feat" href="#galeria" style="background-image:url('imagens/gourmet.jpg')">
+      <a class="feat" href="#galeria" style="background-image:url('imagens/lazer-gourmet.jpg')">
         <span class="feat-body"><span class="feat-ttl">Para receber bem</span><span class="feat-txt">Espaço gourmet e lounges pensados para a sua vida social.</span></span>
         <span class="feat-arrow">↗</span>
       </a>
-      <a class="feat" href="#plantas" style="background-image:url('imagens/lounge.jpg')">
+      <a class="feat" href="#plantas" style="background-image:url('imagens/lazer-festas.jpg')">
         <span class="feat-body"><span class="feat-ttl">Acabamento de verdade</span><span class="feat-txt">Apartamentos amplos, prontos para morar, com até 3 suítes.</span></span>
         <span class="feat-arrow">↗</span>
       </a>
@@ -590,10 +597,19 @@
     </div>
     <div class="gallery stagger" id="gallery">
       <button class="gitem g-wide" data-cat="lazer" data-lb="imagens/piscina.jpg" data-cap="Piscina"><img src="imagens/piscina.jpg" loading="lazy" alt="Piscina"><span class="plus">+</span><span class="cap">Piscina</span></button>
-      <button class="gitem g-tall" data-cat="lazer" data-lb="imagens/academia.jpg" data-cap="Academia"><img src="imagens/academia.jpg" loading="lazy" alt="Academia"><span class="plus">+</span><span class="cap">Academia</span></button>
-      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/gourmet.jpg" data-cap="Espaço gourmet"><img src="imagens/gourmet.jpg" loading="lazy" alt="Espaço gourmet"><span class="plus">+</span><span class="cap">Espaço gourmet</span></button>
-      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lounge.jpg" data-cap="Lounge"><img src="imagens/lounge.jpg" loading="lazy" alt="Lounge"><span class="plus">+</span><span class="cap">Lounge</span></button>
-      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/quadra.jpg" data-cap="Quadra poliesportiva"><img src="imagens/quadra.jpg" loading="lazy" alt="Quadra poliesportiva"><span class="plus">+</span><span class="cap">Quadra</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-gourmet.jpg" data-cap="Espaço gourmet"><img src="imagens/lazer-gourmet.jpg" loading="lazy" alt="Espaço gourmet"><span class="plus">+</span><span class="cap">Espaço gourmet</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-spa.jpg" data-cap="Spa com ofurô"><img src="imagens/lazer-spa.jpg" loading="lazy" alt="Spa com ofurô"><span class="plus">+</span><span class="cap">Spa &amp; ofurô</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-massagem.jpg" data-cap="Sala de massagem"><img src="imagens/lazer-massagem.jpg" loading="lazy" alt="Sala de massagem"><span class="plus">+</span><span class="cap">Massagem</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-beleza.jpg" data-cap="Salão de beleza"><img src="imagens/lazer-beleza.jpg" loading="lazy" alt="Salão de beleza"><span class="plus">+</span><span class="cap">Salão de beleza</span></button>
+      <button class="gitem g-wide" data-cat="lazer" data-lb="imagens/lazer-lounge.jpg" data-cap="Lounge &amp; wine bar"><img src="imagens/lazer-lounge.jpg" loading="lazy" alt="Lounge e wine bar"><span class="plus">+</span><span class="cap">Lounge</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-jogos.jpg" data-cap="Salão de jogos"><img src="imagens/lazer-jogos.jpg" loading="lazy" alt="Salão de jogos"><span class="plus">+</span><span class="cap">Salão de jogos</span></button>
+      <button class="gitem g-wide" data-cat="lazer" data-lb="imagens/lazer-festas.jpg" data-cap="Salão de festas"><img src="imagens/lazer-festas.jpg" loading="lazy" alt="Salão de festas"><span class="plus">+</span><span class="cap">Salão de festas</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-fitness.jpg" data-cap="Espaço fitness"><img src="imagens/lazer-fitness.jpg" loading="lazy" alt="Espaço fitness"><span class="plus">+</span><span class="cap">Fitness</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-kids.jpg" data-cap="Brinquedoteca"><img src="imagens/lazer-kids.jpg" loading="lazy" alt="Brinquedoteca"><span class="plus">+</span><span class="cap">Brinquedoteca</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-estudos.jpg" data-cap="Sala de estudos"><img src="imagens/lazer-estudos.jpg" loading="lazy" alt="Sala de estudos"><span class="plus">+</span><span class="cap">Sala de estudos</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-atelie.jpg" data-cap="Ateliê de arte"><img src="imagens/lazer-atelie.jpg" loading="lazy" alt="Ateliê de arte"><span class="plus">+</span><span class="cap">Ateliê</span></button>
+      <button class="gitem g-wide" data-cat="lazer" data-lb="imagens/lazer-quadra.jpg" data-cap="Quadra poliesportiva"><img src="imagens/lazer-quadra.jpg" loading="lazy" alt="Quadra poliesportiva"><span class="plus">+</span><span class="cap">Quadra</span></button>
+      <button class="gitem g-sq" data-cat="lazer" data-lb="imagens/lazer-coworking.jpg" data-cap="Coworking"><img src="imagens/lazer-coworking.jpg" loading="lazy" alt="Coworking"><span class="plus">+</span><span class="cap">Coworking</span></button>
       <button class="gitem g-wide" data-cat="vista" hidden data-lb="imagens/hero-torre.jpg" data-cap="Fachada do Edifício Kairós"><img src="imagens/hero-torre.jpg" loading="lazy" alt="Fachada do Edifício Kairós"><span class="plus">+</span><span class="cap">Fachada</span></button>
       <button class="gitem g-tall" data-cat="vista" hidden data-lb="imagens/hero-mar.jpg" data-cap="Vista do mar de Jatiúca"><img src="imagens/hero-mar.jpg" loading="lazy" alt="Vista do mar de Jatiúca"><span class="plus">+</span><span class="cap">Vista do mar</span></button>
       <button class="gitem g-sq" data-cat="vista" hidden data-lb="imagens/localizacao-aerea.jpg" data-cap="Jatiúca · vista aérea"><img src="imagens/localizacao-aerea.jpg" loading="lazy" alt="Jatiúca vista aérea"><span class="plus">+</span><span class="cap">Vista aérea</span></button>
@@ -616,7 +632,11 @@
         <li>Espaço pilates</li>
         <li>Espaço mulher</li>
         <li>Salão de beleza</li>
+        <li>Spa com ofurô</li>
+        <li>Sala de massagem</li>
         <li>Salão de festas</li>
+        <li>Salão de jogos</li>
+        <li>Ateliê de arte</li>
         <li>Coworking</li>
         <li>Espaço delivery</li>
         <li>Bicicletário</li>
@@ -669,8 +689,8 @@
       <div class="rv"><img src="imagens/construtora-delman.jpg" loading="lazy" alt="Construtora Delman"></div>
       <div class="rv">
         <div class="eyebrow" style="color:var(--wine-soft)">A construtora</div>
-        <h2 class="h2">Qualidade de quem constrói há <span class="serif" style="color:var(--wine-soft)">40 anos</span> em Maceió.</h2>
-        <p>Há quatro décadas a Delman constrói bairros, gerações e relações de confiança em Maceió. Cada entrega carrega o mesmo compromisso: acabamento de verdade, prazo cumprido e o cuidado de quem constrói para durar.</p>
+        <h2 class="h2">Qualidade de quem constrói há <span class="serif" style="color:var(--wine-soft)">mais de 30 anos</span> em Maceió.</h2>
+        <p>Há mais de três décadas a Delman constrói bairros, gerações e relações de confiança em Maceió. Cada entrega carrega o mesmo compromisso: acabamento de verdade, prazo cumprido e o cuidado de quem constrói para durar.</p>
       </div>
     </div>
   </div>
@@ -701,7 +721,11 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img class="logo" src="imagens/brand-lockup-navy.png" alt="Delman · Edifício Kairós">
+        <div class="brand brand-foot">
+          <img class="blogo" src="imagens/logo-delman.png" alt="Construtora Delman" />
+          <span class="brand-sep" aria-hidden="true"></span>
+          <img class="blogo" src="imagens/logo-kairos.png" alt="Edifício Kairós" />
+        </div>
         <p style="max-width:340px;font-size:14px">Residencial pronto para morar em Jatiúca, Maceió. Realização Construtora Delman.</p>
       </div>
       <div>
@@ -739,10 +763,10 @@
 
 <script>
   // header solid on scroll
-  var hdr=document.getElementById('hdr'),logo=document.getElementById('logo');
+  var hdr=document.getElementById('hdr'),logo=document.getElementById('logo'),logoK=document.getElementById('logo-k'),logoD=document.getElementById('logo-d');
   function onScroll(){
-    if(window.scrollY>40){hdr.classList.add('solid');logo.src='imagens/brand-lockup-navy.png';logo.classList.remove('logo-light');}
-    else{hdr.classList.remove('solid');logo.src='imagens/brand-lockup.png';logo.classList.add('logo-light');}
+    if(window.scrollY>40){hdr.classList.add('solid');logo.classList.remove('logo-light');if(logoD)logoD.src='imagens/logo-delman.png';if(logoK)logoK.src='imagens/logo-kairos.png';}
+    else{hdr.classList.remove('solid');logo.classList.add('logo-light');if(logoD)logoD.src='imagens/logo-delman-branco.png';if(logoK)logoK.src='imagens/logo-kairos-branco.png';}
   }
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 

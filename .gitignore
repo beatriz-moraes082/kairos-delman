@@ -28,3 +28,11 @@ _sea/
 
 # vídeos otimizados da LP (devem ir pro repo)
 !imagens/*.mp4
+
+# Fotos-fonte da área de lazer (originais ~6MB — já otimizadas em imagens/lazer-*.jpg)
+DSC*.jpg
+# Foto-fonte dos donos (já otimizada em imagens/construtora-delman.jpg)
+/delman-donos.png
+# Pastas-fonte das marcas (já processadas em imagens/logo-*.png)
+DELMAN E KAIRÓS*/
+/Ativo 12.png

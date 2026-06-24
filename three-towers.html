@@ -157,7 +157,7 @@
   .tcard-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--ink)}
   .tcard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
   .tcard:hover .tcard-media img{transform:scale(1.06)}
-  .tcard-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(15,12,10,.28))}
+  .tcard-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(15,12,10,.58))}
   .tcard-tag{position:absolute;left:16px;bottom:14px;z-index:2;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(4px);border-radius:999px;padding:6px 13px}
   .tcard-body{display:flex;flex-direction:column;flex:1;padding:26px 30px 32px}
   .tcard .tnum{font-family:var(--serif);font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:.85}
@@ -372,6 +372,7 @@
   .tcard.emp .tcard-perfil{color:var(--emp-deep);background:var(--emp-soft)}
   .tcard.sd5 .tcard-perfil{color:var(--sd5-deep);background:var(--sd5-soft)}
   .tcard.sd6 .tcard-perfil{color:var(--sd6-deep);background:var(--sd6-soft)}
+  .tcard-media .tcard-perfil{position:absolute;left:16px;bottom:14px;z-index:3;margin-bottom:0;box-shadow:0 8px 22px rgba(0,0,0,.32)}
   .tcard-perfil::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 
   /* O complexo — dark premium (família da seção investidor) */
@@ -458,9 +459,8 @@
     </div>
     <div class="towers stagger" style="text-align:left">
       <div class="tcard emp">
-        <div class="tcard-media"><img src="imagens/tt-emp-facade.jpg" alt="Fachada do Delman Empresarial 3.0" loading="lazy" /></div>
+        <div class="tcard-media"><img src="imagens/tt-emp-facade.jpg" alt="Fachada do Delman Empresarial 3.0" loading="lazy" /><span class="tcard-perfil">Renda + valorização</span></div>
         <div class="tcard-body">
-          <span class="tcard-perfil">Renda + valorização</span>
           <span class="tnum">Torre 01</span>
           <h3>Delman Empresarial 3.0</h3>
           <span class="tline">Para empreender e investir.</span>
@@ -469,9 +469,8 @@
         </div>
       </div>
       <div class="tcard sd5">
-        <div class="tcard-media"><img src="imagens/tt-sd5-piscina.jpg" alt="Piscina do Studio Design 5" loading="lazy" /></div>
+        <div class="tcard-media"><img src="imagens/tt-sd5-piscina.jpg" alt="Piscina do Studio Design 5" loading="lazy" /><span class="tcard-perfil">Morar + valorizar</span></div>
         <div class="tcard-body">
-          <span class="tcard-perfil">Morar + valorizar</span>
           <span class="tnum">Torre 02</span>
           <h3>Studio Design 5</h3>
           <span class="tline">Para morar com lazer de resort.</span>
@@ -480,9 +479,8 @@
         </div>
       </div>
       <div class="tcard sd6">
-        <div class="tcard-media"><img src="imagens/tt-sd5-lounge.jpg" alt="Lounge da linha Studio Design" loading="lazy" /></div>
+        <div class="tcard-media"><img src="imagens/tt-sd5-lounge.jpg" alt="Lounge da linha Studio Design" loading="lazy" /><span class="tcard-perfil">Renda de locação</span></div>
         <div class="tcard-body">
-          <span class="tcard-perfil">Renda de locação</span>
           <span class="tnum">Torre 03</span>
           <h3>Studio Design 6</h3>
           <span class="tline">Para morar com praticidade ou investir em locação.</span>

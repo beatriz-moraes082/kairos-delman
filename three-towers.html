@@ -93,6 +93,12 @@
   .hero-inner{position:relative;z-index:1;width:100%;padding-top:100px;padding-bottom:30px}
   .hero-content{max-width:820px}
   .badge{display:inline-flex;align-items:center;gap:11px;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .hero-tags{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .hero-tags .badge{margin-bottom:0}
+  .selo-obras{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0c2a16;background:linear-gradient(180deg,#3ee07f,#22b85e);border-radius:999px;padding:8px 15px;box-shadow:0 10px 24px -8px rgba(37,211,102,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+  .selo-obras svg{width:16px;height:16px}
+  .selo-obras .pulse{background:#0c2a16;box-shadow:0 0 0 0 rgba(12,42,22,.5)}
+  @keyframes pulseDark{70%{box-shadow:0 0 0 8px rgba(12,42,22,0)}100%{box-shadow:0 0 0 0 rgba(12,42,22,0)}}
   .pulse{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pulse 2s infinite}
   @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
   .hero h1{font-size:clamp(36px,5.4vw,68px);font-weight:700;line-height:1.02;letter-spacing:-0.035em;text-shadow:0 2px 40px rgba(0,0,0,.4)}
@@ -415,7 +421,10 @@
   </div>
   <div class="hero-inner wrap">
     <div class="hero-content">
-      <span class="badge hero-enter" style="--d:.1s"><span class="pulse"></span> Jatiúca · 500m da praia · Maceió/AL</span>
+      <div class="hero-tags hero-enter" style="--d:.1s">
+        <span class="badge"><span class="pulse"></span> Jatiúca · 500m da praia · Maceió/AL</span>
+        <span class="selo-obras"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 3.2V7h-2V3.2A6 6 0 0 0 6 9v3h12V9a6 6 0 0 0-5-5.8zM4 13h16a1 1 0 0 1 1 1v1.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V14a1 1 0 0 1 1-1z"/></svg> Obras iniciadas</span>
+      </div>
       <h1 class="hero-enter" style="--d:.22s">Trabalhe, more ou invista. <span class="serif">Tudo em um só endereço.</span></h1>
       <p class="sub hero-enter" style="--d:.38s">Salas comerciais, studios e apartamentos pra morar ou investir, a 500m da praia. Por quem constrói há mais de 30 anos em Maceió.</p>
       <div class="hero-ctas hero-enter" style="--d:.5s">
